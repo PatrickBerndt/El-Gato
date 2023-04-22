@@ -1,14 +1,6 @@
 class Character extends MovableObject{
 
-    height = 160;
-    width = 160;
-    speed = 5;
-    offset_x = 30;
-    offset_y = 30;
-    offset_width = 60;
-    offset_height = 30;
-
-    IMAGES_IDLE =[
+IMAGES_IDLE =[
         '../img/cat01/idle/cat01_idle_1.png',
         '../img/cat01/idle/cat01_idle_2.png',
         '../img/cat01/idle/cat01_idle_3.png',
@@ -65,6 +57,14 @@ class Character extends MovableObject{
         '../img/cat01/die/cat01_die_7.png',
         '../img/cat01/die/cat01_die_8.png'
     ];
+
+    height = 160;
+    width = 160;
+    speed = 5;
+    offset_x = 30;
+    offset_y = 30;
+    offset_width = 60;
+    offset_height = 30;
     currentImage = 0;
     world;
     walkingSound = new Audio('audio/walk.mp3')
@@ -128,12 +128,5 @@ class Character extends MovableObject{
                 this.playSingleAnimation(this.IMAGES_HURT);
             }
         }, 160);
-
     }
-
-    
-
-    
-
-    
 }

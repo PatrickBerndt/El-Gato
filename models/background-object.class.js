@@ -7,5 +7,4 @@ class BackgroundObject extends MovableObject {
     constructor(path, offset){
         super().loadImage(path);
     }
-
 }

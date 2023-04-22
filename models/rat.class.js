@@ -1,11 +1,5 @@
 class Rat extends MovableObject {
    
-    y = 345;
-    offset_x = 0;
-    offset_y = 40;
-    offset_width = 0;
-    offset_height = 40;
-
     IMAGES_IDLE =[
         '../img/rat01/idle/Idle_1.png',
         '../img/rat01/idle/Idle_2.png',
@@ -29,6 +23,11 @@ class Rat extends MovableObject {
         '../img/rat01/death/Death_4.png',
     ];
 
+    y = 345;
+    offset_x = 0;
+    offset_y = 40;
+    offset_width = 0;
+    offset_height = 40;
     currentImage = 0;
     enemieDirection = 0;
     energy = 100;
@@ -41,8 +40,6 @@ class Rat extends MovableObject {
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEATH);
         this.loadImages(this.IMAGES_IDLE);
-
-        
         this.animate();
         this.direction();
     }
@@ -51,20 +48,13 @@ class Rat extends MovableObject {
         setInterval(() => {
             this.enemieDirection = Math.random();
             this.speed = 0.4 + Math.random() * 0.9;
-           
         }, 2000);
     }
 
     animate(){
         setInterval(() => {
-            
-
            if(this.isDead()){
                 this.loadImage('../img/rat01/death/Death_4.png');
-                //setTimeout(() => {
-                //    let deadIndex = this.level.rat.indexOf(enemy);
-                //    if (deadIndex > -1 && this.level.enemies[deadIndex].energy === 0) this.level.enemies.splice(deadIndex, 1);
-                //    }, 750);
             }else if(this.isHurt){
                 this.playSingleAnimation(this.IMAGES_HURT);
             }else if(this.enemieDirection <= 0.2 || this.enemieDirection >= 0.8){
@@ -72,7 +62,6 @@ class Rat extends MovableObject {
             }else{
                 this.playAnimation(this.IMAGES_IDLE);
             }
-
         }, 160);
         
         setInterval(()=>{
@@ -82,12 +71,8 @@ class Rat extends MovableObject {
                 }else if(this.enemieDirection >= 0.8){
                     this.moveLeft();
                 }else{
-
                 }   
             }
-            
-              
         },1000/60);
-       
     }
 }

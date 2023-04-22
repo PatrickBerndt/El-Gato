@@ -32,7 +32,6 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        
     }
 
     offsetBackground(){
@@ -40,7 +39,6 @@ class World {
         this.bgLayer2.x = -(this.camera_x * 0.6)/5;
         this.bgLayer3.x = -(this.camera_x * 0.4)/5;
         this.bgLayer4.x = -(this.camera_x * 0.2)/5;
-        
     }
 
     setWorld(){
@@ -106,13 +104,10 @@ class World {
                if(!enemy.isDead()){
                     this.character.speed_y = 20;
                }
-               
                 setTimeout(() => {
                    enemy.isHurt = false;
-                   
                 },1000);
             }
-
         });
     }
 
@@ -128,7 +123,7 @@ class World {
         }
         this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height); 
         
-        this.drawBox(mo);
+        //this.drawBox(mo);
 
         if(mo.mirrorImage){
             this.flipImageBack(mo);

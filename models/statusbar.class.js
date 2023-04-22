@@ -5,7 +5,6 @@ class Statusbar extends DrawableObject{
     width = 133;
     height = 24;
     path;
-    
 
     constructor(x, y, color){
         super();
@@ -21,13 +20,10 @@ class Statusbar extends DrawableObject{
        };
        this.x = x;
        this.y = y;
-    
     }
 
     statusFill(fill){
             this.width = (this.width * fill)/100;
             this.loadImage(this.path); 
-            
     }
-
 }

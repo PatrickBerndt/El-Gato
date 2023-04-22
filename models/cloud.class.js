@@ -3,7 +3,6 @@ class Cloud extends MovableObject {
     y = 50;
     constructor(){
         super().loadImage('../img/clouds/fluffy-clouds2.png');
-        
         this.x = 200 + Math.random()*500;
         this.animate();
     }

@@ -24,7 +24,6 @@ class MovableObject extends DrawableObject {
         }else{
             this.animationCounter = 0;  
         }
-        
     }
 
     //deadEnemy(enemy) {
@@ -80,7 +79,6 @@ class MovableObject extends DrawableObject {
     hit(damage){
         if(this.energy != 0){
             this.energy -= damage; 
-            
         }
     }
 

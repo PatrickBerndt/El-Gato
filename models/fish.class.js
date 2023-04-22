@@ -8,11 +8,9 @@ class Fish extends MovableObject{
         this.x = x;
         this.y = y;
         this.throw();
-        
     }
 
     throw(){
-        
         this.speed_y = 20;
         this.applyGravity();
         setInterval(() => {

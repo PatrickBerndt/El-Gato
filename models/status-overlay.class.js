@@ -4,8 +4,6 @@ class StatusOverlay extends DrawableObject{
     y = 20;
     width = 133;
     height = 24;
-    
-    
 
     constructor(x,y){
         super();

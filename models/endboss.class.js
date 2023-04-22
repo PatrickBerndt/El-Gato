@@ -1,8 +1,4 @@
 class Endboss extends MovableObject {
-   
-    y = 225;
-    height= 200;
-    width = 200;
 
     IMAGES_IDLE =[
         '../img/boss/idle/Idle_1.png',
@@ -39,6 +35,9 @@ class Endboss extends MovableObject {
         '../img/boss/attack/Attack_6.png',
     ];
 
+    y = 225;
+    height= 200;
+    width = 200;
     currentImage = 0;
 
     constructor(){
