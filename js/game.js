@@ -3,9 +3,16 @@ let world;
 let keyboard = new Keyboard();
 
 function init(){
+    
+    
+}
+
+
+function startGame(){
+    document.getElementById('playButton').classList.add('dNone');
+    document.getElementById('coverimage').classList.add('dNone');
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-    
 }
 
 window.addEventListener('keydown', (event)=>{
