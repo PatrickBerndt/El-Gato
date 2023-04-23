@@ -57,7 +57,7 @@ IMAGES_IDLE =[
         '../img/cat01/die/cat01_die_7.png',
         '../img/cat01/die/cat01_die_8.png'
     ];
-
+    
     height = 160;
     width = 160;
     speed = 5;

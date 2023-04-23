@@ -22,7 +22,7 @@ class Rat extends MovableObject {
         '../img/rat01/death/Death_3.png',
         '../img/rat01/death/Death_4.png',
     ];
-
+    x;
     y = 345;
     offset_x = 0;
     offset_y = 40;
@@ -31,6 +31,8 @@ class Rat extends MovableObject {
     currentImage = 0;
     enemieDirection = 0;
     energy = 100;
+
+    
 
     constructor(){
         
@@ -65,6 +67,7 @@ class Rat extends MovableObject {
         }, 160);
         
         setInterval(()=>{
+
             if(!this.isDead()){
                 if(this.enemieDirection <= 0.2){
                     this.moveRight();
@@ -75,4 +78,6 @@ class Rat extends MovableObject {
             }
         },1000/60);
     }
+
+
 }

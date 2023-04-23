@@ -8,6 +8,7 @@ class MovableObject extends DrawableObject {
     isImune=false;
     animationCounter = 0;
 
+    
     playAnimation(images){
         let i = this.currentImage % images.length;
         let path = images[i];

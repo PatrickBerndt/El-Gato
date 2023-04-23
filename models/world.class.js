@@ -17,6 +17,10 @@ class World {
     overlay = [new StatusOverlay(20,20),new StatusOverlay(20,50),new StatusOverlay(20,80)];
     throwFish =[];
     
+    distanceBetweenObject=0;
+
+
+    
 
     
     bgLayer1 = new BackgroundObject('img/background/Background_0.png');
@@ -33,6 +37,9 @@ class World {
         this.setWorld();
         this.run();
     }
+
+   
+
 
     offsetBackground(){
         this.bgLayer1.x = -(this.camera_x * 0.8)/5;
@@ -77,13 +84,21 @@ class World {
         setInterval(() => {
             this.checkIsColliding();
             this.checkThrowObject();
+            this.distanceBetween();
         }, 100);
+    }
+
+    distanceBetween(){
+        this.level.enemies.forEach(enemy => {
+             console.log(enemy.x);
+        });
+        
+       
     }
 
     checkThrowObject(){
         if(this.keyboard.SPACE && !(this.keyboard.SPACE = false)){ 
-            let throwFish = new Fish(this.character.x + 100 , this.character.y);  
-            console.log(throwFish);
+            let throwFish = new Fish(this.character.x + 100 , this.character.y); 
             this.fish.push(throwFish);
         }
     }
