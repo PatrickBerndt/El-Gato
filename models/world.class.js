@@ -16,8 +16,8 @@ class World {
     fishBar = new Statusbar(20,80,'green')
     overlay = [new StatusOverlay(20,20),new StatusOverlay(20,50),new StatusOverlay(20,80)];
     throwFish =[];
+    isInune=false;
     
-    distanceBetweenObject=0;
 
 
     
@@ -84,16 +84,8 @@ class World {
         setInterval(() => {
             this.checkIsColliding();
             this.checkThrowObject();
-            this.distanceBetween();
-        }, 100);
-    }
-
-    distanceBetween(){
-        this.level.enemies.forEach(enemy => {
-             console.log(enemy.x);
-        });
-        
-       
+            this.collisionWithMilk();
+        }, 50);
     }
 
     checkThrowObject(){
@@ -106,14 +98,15 @@ class World {
 
     checkIsColliding(){
         this.level.enemies.forEach(enemy => {
-            if(this.character.isColliding(enemy) && !this.character.isFalling() && !enemy.isDead()){
+            if(this.character.isColliding(enemy,0,0,40,0) && !this.character.isFalling() && !enemy.isDead() && !this.isInune){
                 this.character.hit(5);
                 this.healthBar.statusFill(this.character.energy);
                 this.character.isHurt= true;
+                this.isInune();
                 setTimeout(() => {
                     this.character.isHurt = false;
                 },1000);
-            }else if(this.character.isColliding(enemy) && this.character.isFalling()){
+            }else if(this.character.isColliding(enemy,0,0,40,0) && this.character.isFalling()){
                 enemy.hit(50);
                enemy.isHurt= true;
                if(!enemy.isDead()){
@@ -122,6 +115,16 @@ class World {
                 setTimeout(() => {
                    enemy.isHurt = false;
                 },1000);
+            }
+        });
+    }
+
+    collisionWithMilk(){
+        this.level.milk.forEach((milk, index) => {
+            if (this.character.isColliding(milk,0,0,0,0)) {
+              //this.statusBars[1].collectedCoins.push(coin);
+              //this.checkSoundAndPlay(this.audio.collectedCoin_sound, 1, false);
+              this.level.milk.splice(index, 1);
             }
         });
     }
@@ -138,7 +141,7 @@ class World {
         }
         this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height); 
         
-        //this.drawBox(mo);
+       //this.drawBox(mo);
 
         if(mo.mirrorImage){
             this.flipImageBack(mo);
@@ -146,11 +149,21 @@ class World {
     }
 
     drawBox(mo){
-        this.ctx.beginPath();
-        this.ctx.lineWidth = '2';
-        this.ctx.strokeStyle = "red";
-        this.ctx.rect(mo.x, mo.y, mo.width, mo.height);
-        this.ctx.stroke();  
+        if (this instanceof Character){
+            this.ctx.beginPath();
+            this.ctx.lineWidth = '2';
+            this.ctx.strokeStyle = "red";
+            this.ctx.rect(mo.x, mo.y, mo.width, mo.height);
+            this.ctx.stroke();   
+        }
+         
+        if (this instanceof Rat) {
+            this.ctx.beginPath();
+            this.ctx.lineWidth = "2";
+            this.ctx.strokeStyle = "blue";
+            this.ctx.rect(mo.x + 0, mo.y + 40, mo.width - 0, mo.height - 40);
+            this.ctx.stroke();
+          }
     }
 
     flipImage(mo){
