@@ -23,7 +23,8 @@ class Statusbar extends DrawableObject{
     }
 
     statusFill(fill){
-            this.width = (this.width * fill)/100;
+            this.width = (133 * fill)/100 ;
+            console.log(this.width);
             this.loadImage(this.path); 
     }
 }

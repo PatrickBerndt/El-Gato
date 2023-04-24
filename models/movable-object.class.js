@@ -56,12 +56,7 @@ class MovableObject extends DrawableObject {
         );
       }
 
-    isImune(){
-        isImune=true;
-        setTimeout(() => {
-            isImune=false;
-        }, 2000);
-    }
+    
 
     isDead(){
         return this.energy == 0;
@@ -69,7 +64,7 @@ class MovableObject extends DrawableObject {
 
     hit(damage){
         if(this.energy != 0){
-            this.energy -= damage; 
+            this.energy -= damage;
         }
     }
 

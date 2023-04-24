@@ -16,7 +16,7 @@ class World {
     fishBar = new Statusbar(20,80,'green')
     overlay = [new StatusOverlay(20,20),new StatusOverlay(20,50),new StatusOverlay(20,80)];
     throwFish =[];
-    isInune=false;
+    isImune=false;
     
 
 
@@ -98,11 +98,12 @@ class World {
 
     checkIsColliding(){
         this.level.enemies.forEach(enemy => {
-            if(this.character.isColliding(enemy,0,0,40,0) && !this.character.isFalling() && !enemy.isDead() && !this.isInune){
+            if(this.character.isColliding(enemy,0,0,40,0) && !this.character.isFalling() && !enemy.isDead() && !this.isImune){
                 this.character.hit(5);
                 this.healthBar.statusFill(this.character.energy);
+                console.log(this.character.energy);
                 this.character.isHurt= true;
-                this.isInune();
+                this.getImune();
                 setTimeout(() => {
                     this.character.isHurt = false;
                 },1000);
@@ -117,6 +118,13 @@ class World {
                 },1000);
             }
         });
+    }
+
+    getImune(){
+        this.isImune=true;
+        setTimeout(() => {
+            this.isImune=false;
+        }, 2000);
     }
 
     collisionWithMilk(){
