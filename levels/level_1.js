@@ -24,6 +24,9 @@ const level_1 = new Level(
         new Milk(),
         new Milk(),
         new Milk(),
+        new Milk(),
+        new Milk(),
+        new Milk(),
     ]
 );
 

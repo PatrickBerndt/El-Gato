@@ -17,6 +17,7 @@ class World {
     overlay = [new StatusOverlay(20,20),new StatusOverlay(20,50),new StatusOverlay(20,80)];
     throwFish =[];
     isImune=false;
+    fillMilk=0;
     
 
 
@@ -101,7 +102,6 @@ class World {
             if(this.character.isColliding(enemy,0,0,40,0) && !this.character.isFalling() && !enemy.isDead() && !this.isImune){
                 this.character.hit(5);
                 this.healthBar.statusFill(this.character.energy);
-                console.log(this.character.energy);
                 this.character.isHurt= true;
                 this.getImune();
                 setTimeout(() => {
@@ -130,7 +130,10 @@ class World {
     collisionWithMilk(){
         this.level.milk.forEach((milk, index) => {
             if (this.character.isColliding(milk,0,0,0,0)) {
-              //this.statusBars[1].collectedCoins.push(coin);
+              if(this.fillMilk != 100){
+                this.fillMilk += 10;
+                this.milkBar.statusFill(this.fillMilk);
+              }
               //this.checkSoundAndPlay(this.audio.collectedCoin_sound, 1, false);
               this.level.milk.splice(index, 1);
             }

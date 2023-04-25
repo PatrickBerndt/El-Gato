@@ -13,10 +13,10 @@ class Statusbar extends DrawableObject{
         this.statusFill(100);
        }else if(color == 'green'){
         this.path = '../img/objects/Fill_Green.png';
-        this.statusFill(50);
+        this.statusFill(0);
        }else if(color == 'blue'){
         this.path = '../img/objects/Fill_Blue.png';
-        this.statusFill(50);
+        this.statusFill(0);
        };
        this.x = x;
        this.y = y;
@@ -24,7 +24,6 @@ class Statusbar extends DrawableObject{
 
     statusFill(fill){
             this.width = (133 * fill)/100 ;
-            console.log(this.width);
             this.loadImage(this.path); 
     }
 }

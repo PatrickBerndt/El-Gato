@@ -7,6 +7,7 @@ class MovableObject extends DrawableObject {
     isHurt= false;
     animationCounter = 0;
 
+
     
     playAnimation(images){
         let i = this.currentImage % images.length;
@@ -67,6 +68,8 @@ class MovableObject extends DrawableObject {
             this.energy -= damage;
         }
     }
+
+    
 
     moveRight() {
         this.x += this.speed;
