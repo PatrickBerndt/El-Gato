@@ -11,10 +11,17 @@ class Fish extends MovableObject{
     }
 
     throw(){
-        this.speed_y = 20;
+        this.speed_y = 10;
         this.applyGravity();
-        setInterval(() => {
+        if(this.mirrorImage){
+            setInterval(() => {
+                this.x += -15;
+              }, 25 );
+        }else{
+            setInterval(() => {
             this.x += 15;
-          }, 25 );
+            }, 25 );
+        }
+        
     }
 }
