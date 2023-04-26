@@ -4,7 +4,7 @@ class Fish extends MovableObject{
     height = 70;
    
     constructor(x,y){
-        super().loadImage('../img/objects/fish.png');
+        super().loadImage('./img/objects/fish.png');
         this.x = x;
         this.y = y;
         this.throw();

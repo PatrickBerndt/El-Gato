@@ -9,7 +9,7 @@ class StatusOverlay extends DrawableObject{
         super();
         this.x = x;
         this.y = y;
-       this.loadImage('../img/objects/Progressbar.png');
+       this.loadImage('./img/objects/Progressbar.png');
         
     }
 

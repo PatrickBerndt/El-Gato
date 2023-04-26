@@ -24,7 +24,7 @@ class World {
     
 
     
-    bgLayer1 = new BackgroundObject('img/background/Background_0.png');
+    bgLayer1 = new BackgroundObject('./img/background/Background_0.png');
     bgLayer2 = new BackgroundObject('img/background/Background_1.png');
     bgLayer3 = new BackgroundObject('img/background/Background_2.png');
     bgLayer4 = new BackgroundObject('img/background/Background_3.png');

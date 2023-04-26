@@ -9,13 +9,13 @@ class Statusbar extends DrawableObject{
     constructor(x, y, color){
         super();
        if(color == 'red'){
-        this.path = '../img/objects/Fill_Red.png';
+        this.path = './img/objects/Fill_Red.png';
         this.statusFill(100);
        }else if(color == 'green'){
-        this.path = '../img/objects/Fill_Green.png';
+        this.path = './img/objects/Fill_Green.png';
         this.statusFill(0);
        }else if(color == 'blue'){
-        this.path = '../img/objects/Fill_Blue.png';
+        this.path = './img/objects/Fill_Blue.png';
         this.statusFill(0);
        };
        this.x = x;

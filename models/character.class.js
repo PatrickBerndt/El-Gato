@@ -1,61 +1,61 @@
 class Character extends MovableObject{
 
 IMAGES_IDLE =[
-        '../img/cat01/idle/cat01_idle_1.png',
-        '../img/cat01/idle/cat01_idle_2.png',
-        '../img/cat01/idle/cat01_idle_3.png',
-        '../img/cat01/idle/cat01_idle_4.png',
-        '../img/cat01/idle/cat01_idle_5.png',
-        '../img/cat01/idle/cat01_idle_6.png',
-        '../img/cat01/idle/cat01_idle_7.png',
-        '../img/cat01/idle/cat01_idle_8.png',        
+        './img/cat01/idle/cat01_idle_1.png',
+        './img/cat01/idle/cat01_idle_2.png',
+        './img/cat01/idle/cat01_idle_3.png',
+        './img/cat01/idle/cat01_idle_4.png',
+        './img/cat01/idle/cat01_idle_5.png',
+        './img/cat01/idle/cat01_idle_6.png',
+        './img/cat01/idle/cat01_idle_7.png',
+        './img/cat01/idle/cat01_idle_8.png',        
     ];
     IMAGES_WALK =[
-        '../img/cat01/walk/cat01_walk_1.png',
-        '../img/cat01/walk/cat01_walk_2.png',
-        '../img/cat01/walk/cat01_walk_3.png',
-        '../img/cat01/walk/cat01_walk_4.png',
-        '../img/cat01/walk/cat01_walk_5.png',
-        '../img/cat01/walk/cat01_walk_6.png',
-        '../img/cat01/walk/cat01_walk_7.png',
-        '../img/cat01/walk/cat01_walk_8.png',
+        './img/cat01/walk/cat01_walk_1.png',
+        './img/cat01/walk/cat01_walk_2.png',
+        './img/cat01/walk/cat01_walk_3.png',
+        './img/cat01/walk/cat01_walk_4.png',
+        './img/cat01/walk/cat01_walk_5.png',
+        './img/cat01/walk/cat01_walk_6.png',
+        './img/cat01/walk/cat01_walk_7.png',
+        './img/cat01/walk/cat01_walk_8.png',
     ];
     IMAGES_FALL = [
-        '../img/cat01/fall/cat01_fall_1.png',
-        '../img/cat01/fall/cat01_fall_2.png',
-        '../img/cat01/fall/cat01_fall_3.png'
+        './img/cat01/fall/cat01_fall_1.png',
+        './img/cat01/fall/cat01_fall_2.png',
+        './img/cat01/fall/cat01_fall_3.png'
     ];
     IMAGES_JUMP = [
-        '../img/cat01/jump/cat01_jump_1.png',
-        '../img/cat01/jump/cat01_jump_2.png',
-        '../img/cat01/jump/cat01_jump_3.png',
-        '../img/cat01/jump/cat01_jump_4.png',
+        './img/cat01/jump/cat01_jump_1.png',
+        './img/cat01/jump/cat01_jump_2.png',
+        './img/cat01/jump/cat01_jump_3.png',
+        './img/cat01/jump/cat01_jump_4.png',
     ];
     IMAGES_ATTACK = [
-        '../img/cat01/attack/cat01_attack_1.png',
-        '../img/cat01/attack/cat01_attack_2.png',
-        '../img/cat01/attack/cat01_attack_3.png',
-        '../img/cat01/attack/cat01_attack_4.png',
-        '../img/cat01/attack/cat01_attack_5.png',
-        '../img/cat01/attack/cat01_attack_6.png',
-        '../img/cat01/attack/cat01_attack_7.png'
+        './img/cat01/attack/cat01_attack_1.png',
+        './img/cat01/attack/cat01_attack_2.png',
+        './img/cat01/attack/cat01_attack_3.png',
+        './img/cat01/attack/cat01_attack_4.png',
+        './img/cat01/attack/cat01_attack_5.png',
+        './img/cat01/attack/cat01_attack_6.png',
+        './img/cat01/attack/cat01_attack_7.png'
     ];
     IMAGES_HURT = [
-        '../img/cat01/hurt/cat01_hurt_1.png',
-        '../img/cat01/hurt/cat01_hurt_2.png',
-        '../img/cat01/hurt/cat01_hurt_3.png',
-        '../img/cat01/hurt/cat01_hurt_4.png'
+        './img/cat01/hurt/cat01_hurt_1.png',
+        './img/cat01/hurt/cat01_hurt_2.png',
+        './img/cat01/hurt/cat01_hurt_3.png',
+        './img/cat01/hurt/cat01_hurt_4.png'
         
     ];
     IMAGES_DEATH = [
-        '../img/cat01/die/cat01_die_1.png',
-        '../img/cat01/die/cat01_die_2.png',
-        '../img/cat01/die/cat01_die_3.png',
-        '../img/cat01/die/cat01_die_4.png',
-        '../img/cat01/die/cat01_die_5.png',
-        '../img/cat01/die/cat01_die_6.png',
-        '../img/cat01/die/cat01_die_7.png',
-        '../img/cat01/die/cat01_die_8.png'
+        './img/cat01/die/cat01_die_1.png',
+        './img/cat01/die/cat01_die_2.png',
+        './img/cat01/die/cat01_die_3.png',
+        './img/cat01/die/cat01_die_4.png',
+        './img/cat01/die/cat01_die_5.png',
+        './img/cat01/die/cat01_die_6.png',
+        './img/cat01/die/cat01_die_7.png',
+        './img/cat01/die/cat01_die_8.png'
     ];
     
     height = 160;
@@ -71,7 +71,7 @@ IMAGES_IDLE =[
     energy = 100 ;
 
     constructor(){
-        super().loadImage('../img/cat01/idle/cat01_idle_1.png');
+        super().loadImage('./img/cat01/idle/cat01_idle_1.png');
         this.loadImages(this.IMAGES_WALK);
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_FALL);
