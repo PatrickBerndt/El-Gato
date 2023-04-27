@@ -13,7 +13,7 @@ const level_1 = new Level(
         new Endboss(),
     ],
     [
-        new Fish(),
+        
     ],
     [
         new Milk(),

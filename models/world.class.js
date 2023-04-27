@@ -91,8 +91,15 @@ class World {
 
     checkThrowObject(){
         if(this.keyboard.SPACE && !(this.keyboard.SPACE = false)){ 
-            let throwFish = new Fish(this.character.x + 100 , this.character.y); 
-            this.fish.push(throwFish);
+            if(this.character.mirrorImage){
+                let throwFish = new Fish(this.character.x + 20  , this.character.y, this);
+                this.fish.push(throwFish);
+            }else{
+                let throwFish = new Fish(this.character.x + 100 , this.character.y, this);
+                this.fish.push(throwFish);
+            }
+             
+            
         }
     }
 
