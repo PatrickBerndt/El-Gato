@@ -108,7 +108,20 @@ class World {
         
         this.level.enemies.forEach(enemy=>{
             let difference = enemy.x - this.character.x;
-            //console.log(difference);
+            if(difference <= 400 && !(difference <= 200)){
+                enemy.toClose = true;
+                enemy.enemieDirection = 0.1;
+            }else if(difference >= -400 && !(difference >= -200)){
+                enemy.toClose = true;
+                enemy.enemieDirection = 0.9;
+            }else if(difference <= 200 && !(difference <= 0)){
+                enemy.toClose = true;
+                enemy.enemieDirection = 0.9;
+            }else if(difference >= -200 && !(difference >= 0)){
+                enemy.toClose = true;
+                enemy.enemieDirection = 0.1;
+            }
+            console.log(difference);
         })
     }
 
@@ -116,7 +129,7 @@ class World {
 
     checkIsColliding(){
         this.level.enemies.forEach(enemy => {
-            if(this.character.isColliding(enemy,0,0,40,0) && !this.character.isFalling() && !enemy.isDead() && !this.isImune){
+            if(this.character.isColliding(enemy,0,0,25,0) && !this.character.isFalling() && !enemy.isDead() && !this.isImune){
                 this.character.hit(5);
                 this.healthBar.statusFill(this.character.energy);
                 this.character.isHurt= true;
@@ -124,7 +137,7 @@ class World {
                 setTimeout(() => {
                     this.character.isHurt = false;
                 },1000);
-            }else if(this.character.isColliding(enemy,0,0,40,0) && this.character.isFalling()){
+            }else if(this.character.isColliding(enemy,0,0,25,0) && this.character.isFalling()){
                 enemy.hit(50);
                enemy.isHurt= true;
                if(!enemy.isDead()){

@@ -30,6 +30,7 @@ class Rat extends MovableObject {
     offset_height = 40;
     currentImage = 0;
     enemieDirection = 0;
+    toClose = false;
     energy = 100;
    
 
@@ -49,7 +50,10 @@ class Rat extends MovableObject {
 
     direction(){
         setInterval(() => {
-            this.enemieDirection = Math.random();
+            if(this.toClose == false){
+                this.enemieDirection = Math.random();
+            }
+            
             this.speed = 0.4 + Math.random() * 0.9;
         }, 2000);
     }
