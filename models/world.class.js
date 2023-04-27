@@ -86,6 +86,7 @@ class World {
             this.checkIsColliding();
             this.checkThrowObject();
             this.collisionWithMilk();
+            this.checkPosition();
         }, 50);
     }
 
@@ -102,6 +103,15 @@ class World {
             
         }
     }
+
+    checkPosition(){
+        
+        this.level.enemies.forEach(enemy=>{
+            let difference = enemy.x - this.character.x;
+            //console.log(difference);
+        })
+    }
+
 
 
     checkIsColliding(){

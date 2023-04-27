@@ -31,6 +31,7 @@ class Rat extends MovableObject {
     currentImage = 0;
     enemieDirection = 0;
     energy = 100;
+   
 
     
 
@@ -53,6 +54,7 @@ class Rat extends MovableObject {
         }, 2000);
     }
 
+    
     animate(){
         setInterval(() => {
            if(this.isDead()){
