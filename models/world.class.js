@@ -87,6 +87,8 @@ class World {
             this.checkThrowObject();
             this.collisionWithMilk();
             this.checkPosition();
+            this.checkCillidingFish();
+            this.checkIfOutsiteLevel();
         }, 50);
     }
 
@@ -99,9 +101,15 @@ class World {
                 let throwFish = new Fish(this.character.x + 100 , this.character.y, this);
                 this.fish.push(throwFish);
             }
-             
-            
         }
+    }
+
+    checkIfOutsiteLevel(){
+        this.level.fish.forEach((fish,index) => {
+            if (fish.y >= 400 ) {
+                this.level.fish.splice(index, 1);
+            }
+        })
     }
 
     checkPosition(){
@@ -121,7 +129,6 @@ class World {
                 enemy.toClose = true;
                 enemy.enemieDirection = 0.1;
             }
-            console.log(difference);
         })
     }
 
@@ -148,6 +155,21 @@ class World {
                 },1000);
             }
         });
+    }
+
+    checkCillidingFish(){
+        this.level.enemies.forEach(enemy =>{
+            this.level.fish.forEach(fish =>{
+                if(fish.isColliding(enemy,0,0,0,0)){
+                enemy.hit(100);
+                enemy.isHurt= true;
+                 setTimeout(() => {
+                    enemy.isHurt = false;
+                 },1000);
+            }
+            })
+            
+        })
     }
 
     getImune(){
