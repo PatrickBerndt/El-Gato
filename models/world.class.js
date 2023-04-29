@@ -140,7 +140,7 @@ class World {
                 this.character.hit(5);
                 this.healthBar.statusFill(this.character.energy);
                 this.character.isHurt= true;
-                this.getImune();
+                this.getImune(2000);
                 setTimeout(() => {
                     this.character.isHurt = false;
                 },1000);
@@ -160,23 +160,25 @@ class World {
     checkCillidingFish(){
         this.level.enemies.forEach(enemy =>{
             this.level.fish.forEach(fish =>{
-                if(fish.isColliding(enemy,0,0,0,0)){
-                enemy.hit(100);
-                enemy.isHurt= true;
-                 setTimeout(() => {
-                    enemy.isHurt = false;
-                 },1000);
-            }
+                if(fish.isColliding(enemy,0,0,40,0) && !this.isImune){
+                    console.log('ping');
+                    enemy.hit(50);
+                    enemy.isHurt= true;
+                    this.getImune(50);
+                    setTimeout(() => {
+                        enemy.isHurt = false;
+                    },1000);
+                }
             })
             
         })
     }
 
-    getImune(){
+    getImune(time){
         this.isImune=true;
         setTimeout(() => {
             this.isImune=false;
-        }, 2000);
+        }, time);
     }
 
     collisionWithMilk(){
