@@ -39,30 +39,60 @@ class Endboss extends MovableObject {
     height= 200;
     width = 200;
     currentImage = 0;
+    offset_x = 80;
+    offset_y = 40;
+    offset_width = 80;
+    offset_height = 40;
+    enemieDirection = 0;
+    toClose = false;
+    energy = 100;
 
     constructor(){
         
-        super().loadImage('./img/rat01/idle/Idle_1.png');
-        this.x = 150 + Math.random()*500;
+        super().loadImage('./img/boss/idle/Idle_1.png');
+        this.x = 400 + Math.random()*500;
         this.loadImages(this.IMAGES_WALK);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_ATTACK);
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_DEATH);
-        this.speed = 0.6 + Math.random() * 0.5;
+        this.direction();
         this.animate();
+    }
+
+    direction(){
+        setInterval(() => {
+            if(this.toClose == false){
+                this.enemieDirection = Math.random();
+            }
+            
+            this.speed = 0.4 + Math.random() * 0.9;
+        }, 2000);
     }
 
     animate(){
         setInterval(() => {
-            this.playAnimation(this.IMAGES_WALK);
-            if(this.isHurt){
+            if(this.isDead()){
+                this.loadImage('./img/boss/death/Death_4.png');
+            }else if(this.isHurt){
                 this.playSingleAnimation(this.IMAGES_HURT);
+            }else if(this.enemieDirection <= 0.2 || this.enemieDirection >= 0.8){
+                this.playAnimation(this.IMAGES_WALK);
+            }else{
+                this.playAnimation(this.IMAGES_IDLE);
             }
+            
         }, 160);
         
         setInterval(()=>{
-            this.moveRight();  
+            if(!this.isDead()){
+                if(this.enemieDirection <= 0.2){
+                    this.moveRight();
+                }else if(this.enemieDirection >= 0.8){
+                    this.moveLeft();
+                }else{
+                }   
+            }
         },1000/60);
        
     }

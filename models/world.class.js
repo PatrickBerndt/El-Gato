@@ -161,8 +161,7 @@ class World {
         this.level.enemies.forEach(enemy =>{
             this.level.fish.forEach(fish =>{
                 if(fish.isColliding(enemy,0,0,40,0) && !this.isImune){
-                    console.log('ping');
-                    enemy.hit(50);
+                    enemy.hit(25);
                     enemy.isHurt= true;
                     this.getImune(50);
                     setTimeout(() => {
