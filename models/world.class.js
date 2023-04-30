@@ -5,6 +5,7 @@ class World {
     clouds = level_1.clouds;
     milk = level_1.milk;
     fish = level_1.fish;
+    boxes = level_1.boxes;
     level = level_1;
     canvas;
     ctx;
@@ -62,14 +63,14 @@ class World {
         this.addToMap(this.bgLayer3);
         this.addToMap(this.bgLayer4);
         this.addToMap(this.bgLayer5);
-        
+
+        this.addObjectToMap(this.boxes);
         this.addToMap(this.character);
         this.addObjectToMap(this.clouds);
         this.addObjectToMap(this.enemies);
         this.addObjectToMap(this.fish);
         this.addObjectToMap(this.milk);
         this.addObjectToMap(this.throwFish);
-        
         this.ctx.translate(-this.camera_x, 0)
         this.addToMap(this.healthBar);
         this.addToMap(this.milkBar);
@@ -87,7 +88,8 @@ class World {
             this.checkThrowObject();
             this.collisionWithMilk();
             this.checkPosition();
-            this.checkCillidingFish();
+            this.checkCollidingFish();
+            this.checkCollisionBox();
             this.checkIfOutsiteLevel();
         }, 50);
     }
@@ -157,7 +159,7 @@ class World {
         });
     }
 
-    checkCillidingFish(){
+    checkCollidingFish(){
         this.level.enemies.forEach(enemy =>{
             this.level.fish.forEach(fish =>{
                 if(fish.isColliding(enemy,0,0,40,0) && !this.isImune){
@@ -171,6 +173,18 @@ class World {
             })
             
         })
+    }
+
+    checkCollisionBox(){
+        this.level.boxes.forEach(box => {
+            if(this.character.isColliding(box,0,0,0,0)&& this.character.isFalling() && !this.isImune){
+                box.hit(50);
+                this.getImune(500);
+                if(!box.isDead()){
+                    this.character.speed_y = 20;
+               }
+            }
+        } )
     }
 
     getImune(time){
