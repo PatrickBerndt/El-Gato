@@ -1,5 +1,5 @@
 class Box extends MovableObject{
-    y = 355;
+    y = 357;
     height= 70;
     width = 70;
     offset_x = 0;
