@@ -26,4 +26,6 @@ class Box extends MovableObject{
         }, 100);
 
     }
+
+    
 }

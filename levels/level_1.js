@@ -39,6 +39,9 @@ const level_1 = new Level(
         new Box(),
         new Box(),
         new Box(),
+    ],
+    [
+        
     ]
 );
 

@@ -6,6 +6,7 @@ class World {
     milk = level_1.milk;
     fish = level_1.fish;
     boxes = level_1.boxes;
+    collectFish = level_1.collectFish;
     level = level_1;
     canvas;
     ctx;
@@ -71,6 +72,8 @@ class World {
         this.addObjectToMap(this.fish);
         this.addObjectToMap(this.milk);
         this.addObjectToMap(this.throwFish);
+        this.addObjectToMap(this.collectFish);
+
         this.ctx.translate(-this.camera_x, 0)
         this.addToMap(this.healthBar);
         this.addToMap(this.milkBar);
@@ -102,20 +105,20 @@ class World {
             }else{
                 let throwFish = new Fish(this.character.x + 100 , this.character.y, this);
                 this.fish.push(throwFish);
+                
             }
         }
     }
 
     checkIfOutsiteLevel(){
-        this.level.fish.forEach((fish,index) => {
+        this.fish.forEach((fish,index) => {
             if (fish.y >= 400 ) {
-                this.level.fish.splice(index, 1);
+                this.fish.splice(index, 1);
             }
         })
     }
 
     checkPosition(){
-        
         this.level.enemies.forEach(enemy=>{
             let difference = enemy.x - this.character.x;
             if(difference <= 400 && !(difference <= 200)){
@@ -177,7 +180,7 @@ class World {
 
     checkCollisionBox(){
         this.level.boxes.forEach(box => {
-            if(this.character.isColliding(box,0,0,0,0)&& this.character.isFalling() && !this.isImune){
+            if(this.character.isColliding(box,0,0,30,0)&& this.character.isFalling() && !this.isImune){
                 box.hit(50);
                 this.getImune(500);
                 if(!box.isDead()){
@@ -227,21 +230,12 @@ class World {
     }
 
     drawBox(mo){
-        if (this instanceof Character){
+       
             this.ctx.beginPath();
             this.ctx.lineWidth = '2';
             this.ctx.strokeStyle = "red";
             this.ctx.rect(mo.x, mo.y, mo.width, mo.height);
             this.ctx.stroke();   
-        }
-         
-        if (this instanceof Rat) {
-            this.ctx.beginPath();
-            this.ctx.lineWidth = "2";
-            this.ctx.strokeStyle = "blue";
-            this.ctx.rect(mo.x + 0, mo.y + 40, mo.width - 0, mo.height - 40);
-            this.ctx.stroke();
-          }
     }
 
     flipImage(mo){
