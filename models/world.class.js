@@ -162,6 +162,12 @@ class World {
         });
     }
 
+    thwowCollectFish(box){
+        let throwcollectFish = new CollectableFish(box.x, box.y,);
+        this.collectFish.push(throwcollectFish);
+        
+    }
+
     checkCollidingFish(){
         this.level.enemies.forEach(enemy =>{
             this.level.fish.forEach(fish =>{
@@ -179,12 +185,19 @@ class World {
     }
 
     checkCollisionBox(){
-        this.level.boxes.forEach(box => {
+        this.level.boxes.forEach((box, index) => {
             if(this.character.isColliding(box,0,0,30,0)&& this.character.isFalling() && !this.isImune){
                 box.hit(50);
                 this.getImune(500);
                 if(!box.isDead()){
                     this.character.speed_y = 20;
+               }
+               if(box.isDead()){
+                this.thwowCollectFish(box);
+                setTimeout(() => {
+                    this.level.boxes.splice(index, 1);   
+                }, 2000);
+                
                }
             }
         } )

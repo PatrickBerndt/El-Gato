@@ -27,24 +27,32 @@ class MovableObject extends DrawableObject {
         }
     }
 
+    
+
     applyGravity(){
         setInterval(() => {
             if(this.isAboveGround() || this.speed_y > 0){
                 this.y -= this.speed_y ;
                 this.speed_y -= this.acceleration;
             }
-            if(!this.isAboveGround()){
+            if(this instanceof CollectableFish && !this.isAboveGround()){
+                this.y = 355;
+            }else if(!this.isAboveGround()){
                 this.y = 295;
             }
+            
         }, 1000/25);
     }
 
     isAboveGround(){
         if(this instanceof Fish){
             return true;
+        }else if(this instanceof CollectableFish){
+            return this.y < 355;
         }else{
            return this.y < 295; 
         }
+        
         
     }
 
