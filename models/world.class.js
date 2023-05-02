@@ -20,6 +20,7 @@ class World {
     throwFish =[];
     isImune=false;
     fillMilk=0;
+    fillFish=0;
     
 
 
@@ -94,18 +95,22 @@ class World {
             this.checkCollidingFish();
             this.checkCollisionBox();
             this.checkIfOutsiteLevel();
+            this.collisionWithCollectFish();
         }, 50);
     }
 
     checkThrowObject(){
-        if(this.keyboard.SPACE && !(this.keyboard.SPACE = false)){ 
+        if(this.keyboard.SPACE && !(this.keyboard.SPACE = false) && this.fillFish != 0 ){ 
             if(this.character.mirrorImage){
                 let throwFish = new Fish(this.character.x + 20  , this.character.y, this);
                 this.fish.push(throwFish);
             }else{
                 let throwFish = new Fish(this.character.x + 100 , this.character.y, this);
                 this.fish.push(throwFish);
-                
+            }
+            if(this.fillFish != 0){
+                this.fillFish -= 10;
+                this.fishBar.statusFill(this.fillFish);
             }
         }
     }
@@ -117,6 +122,8 @@ class World {
             }
         })
     }
+
+   
 
     checkPosition(){
         this.level.enemies.forEach(enemy=>{
@@ -219,6 +226,18 @@ class World {
               }
               //this.checkSoundAndPlay(this.audio.collectedCoin_sound, 1, false);
               this.level.milk.splice(index, 1);
+            }
+        });
+    }
+    collisionWithCollectFish(){
+        this.level.collectFish.forEach((fish, index) => {
+            if (this.character.isColliding(fish,0,0,0,0) && fish.isRising()) {
+                if(this.fillFish != 100){
+                    this.fillFish += 10;
+                    this.fishBar.statusFill(this.fillFish);
+                }
+                   //this.checkSoundAndPlay(this.audio.collectedCoin_sound, 1, false);
+                this.level.collectFish.splice(index, 1);  
             }
         });
     }

@@ -15,6 +15,10 @@ class CollectableFish extends MovableObject {
 
     }
 
+    isRising(){
+        return this.speed_y < 0 && this.isAboveGround();
+    }
+
     throw(){
         this.speed_y = 30;
         this.applyGravity();

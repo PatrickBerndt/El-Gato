@@ -87,6 +87,7 @@ IMAGES_IDLE =[
         return this.speed_y < 0 && this.isAboveGround();
     }
 
+
     animate(){
         setInterval(() => {
             if(this.world.keyboard.RIGHT && this.x < this.world.level.level_end && !this.isDead()){

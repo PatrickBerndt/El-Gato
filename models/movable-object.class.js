@@ -36,7 +36,7 @@ class MovableObject extends DrawableObject {
                 this.speed_y -= this.acceleration;
             }
             if(this instanceof CollectableFish && !this.isAboveGround()){
-                this.y = 355;
+                this.y = 352;
             }else if(!this.isAboveGround()){
                 this.y = 295;
             }
