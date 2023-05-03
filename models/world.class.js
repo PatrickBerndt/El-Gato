@@ -27,6 +27,7 @@ class World {
     bossHurtSound = new Audio('audio/hurt_2.mp3');
     gameMusic = new Audio('audio/gameSound.mp3');
     bossMusic = new Audio('audio/bossSound.mp3');
+    crackingSound = new Audio('audio/cracking.mp3')
 
     bgLayer1 = new BackgroundObject('./img/background/Background_0.png');
     bgLayer2 = new BackgroundObject('img/background/Background_1.png');
@@ -41,7 +42,8 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        this.gameMusic.play();
+       // this.gameMusic.play();
+        this.gameMusic.volume = 0.5;
     }
 
    
@@ -115,7 +117,7 @@ class World {
                 this.fish.push(throwFish);
             }
             if(this.fillFish != 0){
-                this.fillFish -= 10;
+                this.fillFish -= 5;
                 this.fishBar.statusFill(this.fillFish);
             }
             this.attackingSound.play();
@@ -166,8 +168,10 @@ class World {
             }else if(this.character.isColliding(enemy,0,0,25,0) && this.character.isFalling()){
                 enemy.hit(50);
                enemy.isHurt= true;
+               
                if(!enemy.isDead()){
                     this.character.speed_y = 20;
+                    this.ratHurtSound.play();
                }
                 setTimeout(() => {
                    enemy.isHurt = false;
@@ -205,9 +209,11 @@ class World {
                 this.getImune(500);
                 if(!box.isDead()){
                     this.character.speed_y = 20;
+                    this.crackingSound.play();
                }
                if(box.isDead()){
                 this.thwowCollectFish(box);
+                this.crackingSound.play();
                 setTimeout(() => {
                     this.level.boxes.splice(index, 1);   
                 }, 2000);
