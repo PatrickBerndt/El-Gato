@@ -21,12 +21,13 @@ class World {
     isImune=false;
     fillMilk=0;
     fillFish=0;
-    
+    attackingSound = new Audio('audio/whoosh.mp3');
+    collectSound = new Audio('audio/drop.mp3');
+    ratHurtSound = new Audio('audio/mouse.mp3');
+    bossHurtSound = new Audio('audio/hurt_2.mp3');
+    gameMusic = new Audio('audio/gameSound.mp3');
+    bossMusic = new Audio('audio/bossSound.mp3');
 
-
-    
-
-    
     bgLayer1 = new BackgroundObject('./img/background/Background_0.png');
     bgLayer2 = new BackgroundObject('img/background/Background_1.png');
     bgLayer3 = new BackgroundObject('img/background/Background_2.png');
@@ -40,6 +41,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.gameMusic.play();
     }
 
    
@@ -52,6 +54,14 @@ class World {
         this.bgLayer4.x = -(this.camera_x * 0.2)/5;
     }
 
+    addBackground(){
+        this.addToMap(this.bgLayer1);
+        this.addToMap(this.bgLayer2);
+        this.addToMap(this.bgLayer3);
+        this.addToMap(this.bgLayer4);
+        this.addToMap(this.bgLayer5);
+    }
+
     setWorld(){
         this.character.world  = this;
     }
@@ -59,12 +69,8 @@ class World {
     draw(){
         this.ctx.clearRect(0,0, this.canvas.width, this.canvas.height);
         this.offsetBackground();
-        this.ctx.translate(this.camera_x, 0)
-        this.addToMap(this.bgLayer1);
-        this.addToMap(this.bgLayer2);
-        this.addToMap(this.bgLayer3);
-        this.addToMap(this.bgLayer4);
-        this.addToMap(this.bgLayer5);
+        this.ctx.translate(this.camera_x, 0);
+        this.addBackground();
 
         this.addObjectToMap(this.boxes);
         this.addToMap(this.character);
@@ -112,6 +118,7 @@ class World {
                 this.fillFish -= 10;
                 this.fishBar.statusFill(this.fillFish);
             }
+            this.attackingSound.play();
         }
     }
 
@@ -224,7 +231,7 @@ class World {
                 this.fillMilk += 10;
                 this.milkBar.statusFill(this.fillMilk);
               }
-              //this.checkSoundAndPlay(this.audio.collectedCoin_sound, 1, false);
+              this.collectSound.play();
               this.level.milk.splice(index, 1);
             }
         });
@@ -236,7 +243,7 @@ class World {
                     this.fillFish += 10;
                     this.fishBar.statusFill(this.fillFish);
                 }
-                   //this.checkSoundAndPlay(this.audio.collectedCoin_sound, 1, false);
+                   this.collectSound.play();
                 this.level.collectFish.splice(index, 1);  
             }
         });

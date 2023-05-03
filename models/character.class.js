@@ -67,7 +67,8 @@ IMAGES_IDLE =[
     offset_height = 30;
     currentImage = 0;
     world;
-    walkingSound = new Audio('audio/walk.mp3')
+    walkingSound = new Audio('audio/walk.mp3');
+   
     energy = 100 ;
 
     constructor(){
@@ -106,6 +107,7 @@ IMAGES_IDLE =[
 
         setInterval(() => {
             this.walkingSound.pause();
+            
             if(this.isDead()){
                 this.loadImage('../img/cat01/die/cat01_die_8.png')
                
@@ -123,6 +125,8 @@ IMAGES_IDLE =[
             }
             if(this.world.keyboard.SPACE && !this.isDead() ){
                 this.playSingleAnimation(this.IMAGES_ATTACK);
+                
+                
                 
             }
             if(this.isHurt && !this.isDead()){
