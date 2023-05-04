@@ -154,6 +154,9 @@ class World {
             }else if(difference >= -200 && !(difference >= 0)){
                 enemy.toClose = true;
                 enemy.enemieDirection = 0.1;
+            }else if((this.level.level_end - enemy.x) <= 400 ){
+                enemy.toClose = true;
+                enemy.enemieDirection = 0.9;
             }
         })
     }
