@@ -2,6 +2,7 @@ class World {
 
     character = new Character();
     enemies = level_1.enemies;
+    boss = level_1.boss;
     clouds = level_1.clouds;
     milk = level_1.milk;
     fish = level_1.fish;
@@ -42,7 +43,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-       // this.gameMusic.play();
+        this.gameMusic.play();
         this.gameMusic.volume = 0.5;
     }
 
@@ -78,6 +79,7 @@ class World {
         this.addToMap(this.character);
         this.addObjectToMap(this.clouds);
         this.addObjectToMap(this.enemies);
+        this.addObjectToMap(this.boss);
         this.addObjectToMap(this.fish);
         this.addObjectToMap(this.milk);
         this.addObjectToMap(this.throwFish);
@@ -96,11 +98,14 @@ class World {
 
     run(){
         setInterval(() => {
-            this.checkIsColliding();
+            this.checkIsColliding(this.level.enemies);
+            this.checkIsColliding(this.level.boss);
             this.checkThrowObject();
             this.collisionWithMilk();
-            this.checkPosition();
-            this.checkCollidingFish();
+            this.checkPosition(this.level.enemies);
+            this.checkPosition(this.level.boss);
+            this.checkCollidingFish(this.level.enemies);
+            this.checkCollidingFish(this.level.boss);
             this.checkCollisionBox();
             this.checkIfOutsiteLevel();
             this.collisionWithCollectFish();
@@ -134,8 +139,8 @@ class World {
 
    
 
-    checkPosition(){
-        this.level.enemies.forEach(enemy=>{
+    checkPosition(enemies){
+        enemies.forEach(enemy=>{
             let difference = enemy.x - this.character.x;
             if(difference <= 400 && !(difference <= 200)){
                 enemy.toClose = true;
@@ -155,8 +160,8 @@ class World {
 
 
 
-    checkIsColliding(){
-        this.level.enemies.forEach(enemy => {
+    checkIsColliding(enemies){
+        enemies.forEach(enemy => {
             if(this.character.isColliding(enemy,0,0,25,0) && !this.character.isFalling() && !enemy.isDead() && !this.isImune){
                 this.character.hit(5);
                 this.healthBar.statusFill(this.character.energy);
@@ -171,7 +176,12 @@ class World {
                
                if(!enemy.isDead()){
                     this.character.speed_y = 20;
-                    this.ratHurtSound.play();
+                    if(enemy instanceof Rat){
+                        this.ratHurtSound.play();
+                    }else if(enemy instanceof Endboss){
+                        this.bossHurtSound.play();
+                    }
+                    
                }
                 setTimeout(() => {
                    enemy.isHurt = false;
@@ -186,13 +196,20 @@ class World {
         
     }
 
-    checkCollidingFish(){
-        this.level.enemies.forEach(enemy =>{
+    checkCollidingFish(enemies){
+        enemies.forEach(enemy =>{
             this.level.fish.forEach(fish =>{
                 if(fish.isColliding(enemy,0,0,40,0) && !this.isImune){
-                    enemy.hit(25);
+                    
                     enemy.isHurt= true;
-                    this.getImune(50);
+                    this.getImune(1000);
+                    if(enemy instanceof Rat){
+                        enemy.hit(50);
+                        this.ratHurtSound.play();
+                    }else if(enemy instanceof Endboss){
+                        enemy.hit(10);
+                        this.bossHurtSound.play();
+                    }
                     setTimeout(() => {
                         enemy.isHurt = false;
                     },1000);

@@ -10,6 +10,9 @@ const level_1 = new Level(
         new Rat(),
         new Rat(),
         new Rat(),
+        
+    ],
+    [
         new Endboss(),
     ],
     [

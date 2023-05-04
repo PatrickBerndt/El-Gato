@@ -50,7 +50,7 @@ class Endboss extends MovableObject {
     constructor(){
         
         super().loadImage('./img/boss/idle/Idle_1.png');
-        this.x = 400 + Math.random()*500;
+        this.x = 6000 + Math.random()*500;
         this.loadImages(this.IMAGES_WALK);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_ATTACK);
