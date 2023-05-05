@@ -78,6 +78,8 @@ class Endboss extends MovableObject {
                 this.playSingleAnimation(this.IMAGES_HURT);
             }else if(this.enemieDirection <= 0.2 || this.enemieDirection >= 0.8){
                 this.playAnimation(this.IMAGES_WALK);
+            }else if(this.toClose){
+                this.playAnimation(this.IMAGES_ATTACK);
             }else{
                 this.playAnimation(this.IMAGES_IDLE);
             }

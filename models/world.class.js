@@ -22,6 +22,7 @@ class World {
     isImune=false;
     fillMilk=0;
     fillFish=0;
+
     attackingSound = new Audio('audio/whoosh.mp3');
     collectSound = new Audio('audio/drop.mp3');
     ratHurtSound = new Audio('audio/mouse.mp3');
@@ -43,12 +44,9 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        this.gameMusic.play();
+        
         this.gameMusic.volume = 0.5;
     }
-
-   
-
 
     offsetBackground(){
         this.bgLayer1.x = -(this.camera_x * 0.8)/5;
@@ -109,7 +107,19 @@ class World {
             this.checkCollisionBox();
             this.checkIfOutsiteLevel();
             this.collisionWithCollectFish();
+            this.checkForEndboss();
         }, 50);
+    }
+
+    checkForEndboss(){
+        if(this.character.x <= 5000 && !this.boss[0].isDead()){
+            this.gameMusic.play();
+            this.bossMusic.pause();
+        }else{
+            this.gameMusic.pause();
+            this.bossMusic.play();
+        }
+        
     }
 
     checkThrowObject(){
