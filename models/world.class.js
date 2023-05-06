@@ -153,11 +153,23 @@ class World {
         enemies.forEach(enemy=>{
             let difference = enemy.x - this.character.x;
             if(difference <= 400 && !(difference <= 200)){
-                enemy.toClose = true;
-                enemy.enemieDirection = 0.1;
+                if(enemy instanceof Endboss){
+                    enemy.attackCharacter = true;
+                    enemy.enemieDirection = 0.9;
+                }else{
+                    enemy.toClose = true;
+                    enemy.enemieDirection = 0.1;
+                }
+                
             }else if(difference >= -400 && !(difference >= -200)){
-                enemy.toClose = true;
-                enemy.enemieDirection = 0.9;
+                if(enemy instanceof Endboss){
+                    enemy.attackCharacter = true;
+                    enemy.enemieDirection = 0.1;
+                }else{
+                    enemy.toClose = true;
+                    enemy.enemieDirection = 0.9;
+                }
+                
             }else if(difference <= 200 && !(difference <= 0)){
                 enemy.toClose = true;
                 enemy.enemieDirection = 0.9;

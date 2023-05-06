@@ -44,7 +44,8 @@ class Endboss extends MovableObject {
     offset_width = 80;
     offset_height = 40;
     enemieDirection = 0;
-    toClose = false;
+    toClose = false; 
+    attackCharacter = false; 
     energy = 100;
 
     constructor(){
@@ -76,7 +77,7 @@ class Endboss extends MovableObject {
                 this.loadImage('./img/boss/death/Death_4.png');
             }else if(this.isHurt){
                 this.playSingleAnimation(this.IMAGES_HURT);
-            }else if(this.toClose){
+            }else if(this.attackCharacter){
                 this.playAnimation(this.IMAGES_ATTACK);
             }else if(this.enemieDirection <= 0.2 || this.enemieDirection >= 0.8){
                 this.playAnimation(this.IMAGES_WALK);
