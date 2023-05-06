@@ -112,10 +112,10 @@ class World {
     }
 
     checkForEndboss(){
-        if(this.character.x <= 5000 && !this.boss[0].isDead()){
+        if(this.character.x <= 5000){
             this.gameMusic.play();
             this.bossMusic.pause();
-        }else{
+        }else if(!this.boss[0].isDead()){
             this.gameMusic.pause();
             this.bossMusic.play();
         }
@@ -215,12 +215,12 @@ class World {
                 if(fish.isColliding(enemy,0,0,40,0) && !this.isImune){
                     
                     enemy.isHurt= true;
-                    this.getImune(1000);
+                    //this.getImune(1000);
                     if(enemy instanceof Rat){
                         enemy.hit(50);
                         this.ratHurtSound.play();
                     }else if(enemy instanceof Endboss){
-                        enemy.hit(10);
+                        enemy.hit(100);
                         this.bossHurtSound.play();
                     }
                     setTimeout(() => {

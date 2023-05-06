@@ -76,10 +76,10 @@ class Endboss extends MovableObject {
                 this.loadImage('./img/boss/death/Death_4.png');
             }else if(this.isHurt){
                 this.playSingleAnimation(this.IMAGES_HURT);
-            }else if(this.enemieDirection <= 0.2 || this.enemieDirection >= 0.8){
-                this.playAnimation(this.IMAGES_WALK);
             }else if(this.toClose){
                 this.playAnimation(this.IMAGES_ATTACK);
+            }else if(this.enemieDirection <= 0.2 || this.enemieDirection >= 0.8){
+                this.playAnimation(this.IMAGES_WALK);
             }else{
                 this.playAnimation(this.IMAGES_IDLE);
             }
