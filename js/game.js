@@ -47,8 +47,6 @@ window.addEventListener('keyup', (event)=>{
         keyboard.DOWN = false;
     }
     if(event.code == 'Space'){
-        setTimeout(() => {
-            keyboard.SPACE = false;
-        }, 800);
+         keyboard.SPACE = false;      
     }
 });

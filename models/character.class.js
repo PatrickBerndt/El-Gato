@@ -100,17 +100,13 @@ IMAGES_IDLE =[
             if(this.world.keyboard.UP &! this.isAboveGround() && !this.isDead()){
                 this.jump();
             }
-            
             this.world.camera_x = -this.x +100;
-            
         }, 16);
 
         setInterval(() => {
             this.walkingSound.pause();
-            
             if(this.isDead()){
                 this.loadImage('../img/cat01/die/cat01_die_8.png')
-               
             }else if(this.isAboveGround() && this.speed_y < 0){
                 this.playAnimation(this.IMAGES_FALL);
             }else if(this.isAboveGround() && this.speed_y > 0){
@@ -125,9 +121,6 @@ IMAGES_IDLE =[
             }
             if(this.world.keyboard.SPACE && !this.isDead() ){
                 this.playSingleAnimation(this.IMAGES_ATTACK);
-                
-                
-                
             }
             if(this.isHurt && !this.isDead()){
                 this.playSingleAnimation(this.IMAGES_HURT);

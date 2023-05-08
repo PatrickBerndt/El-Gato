@@ -7,7 +7,6 @@ class MovableObject extends DrawableObject {
     isHurt= false;
     animationCounter = 0;
 
-
     
     playAnimation(images){
         let i = this.currentImage % images.length;
@@ -27,8 +26,6 @@ class MovableObject extends DrawableObject {
         }
     }
 
-    
-
     applyGravity(){
         setInterval(() => {
             if(this.isAboveGround() || this.speed_y > 0){
@@ -40,7 +37,6 @@ class MovableObject extends DrawableObject {
             }else if(!this.isAboveGround()){
                 this.y = 295;
             }
-            
         }, 1000/25);
     }
 
@@ -52,8 +48,6 @@ class MovableObject extends DrawableObject {
         }else{
            return this.y < 295; 
         }
-        
-        
     }
 
     isColliding(obj, reduceLeftDistance, reduceRightDistance, reduceUpperDistance, reduceLowerDistance) {
@@ -63,9 +57,7 @@ class MovableObject extends DrawableObject {
           this.y + this.height - this.offset_height >= obj.y + reduceUpperDistance &&
           this.y + this.offset_y <= obj.y + obj.height - reduceLowerDistance
         );
-      }
-
-    
+    }
 
     isDead(){
         return this.energy <= 0;
@@ -76,8 +68,6 @@ class MovableObject extends DrawableObject {
             this.energy -= damage;
         }
     }
-
-    
 
     moveRight() {
         this.x += this.speed;

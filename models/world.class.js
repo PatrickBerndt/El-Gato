@@ -14,10 +14,12 @@ class World {
     keyboard;
     camera_x = 0;
     energy = 100;
-    healthBar = new Statusbar(20,20,'red');
-    milkBar = new Statusbar(20,50, 'blue');
-    fishBar = new Statusbar(20,80,'green')
-    overlay = [new StatusOverlay(20,20),new StatusOverlay(20,50),new StatusOverlay(20,80)];
+    healthBar = new Statusbar(30,20,'red');
+    milkBar = new Statusbar(30,50, 'blue');
+    fishBar = new Statusbar(30,80,'green')
+    overlay = [new StatusOverlay(30,20), new StatusSymbol (5,15,30,30,'heart'),
+                new StatusOverlay(30,50), new StatusSymbol (5,45,30,30,'milk'),
+                new StatusOverlay(30,80), new StatusSymbol (10,75,20,30,'fish')];
     throwFish =[];
     isImune=false;
     fillMilk=0;
@@ -107,7 +109,7 @@ class World {
             this.checkCollisionBox();
             this.checkIfOutsiteLevel();
             this.collisionWithCollectFish();
-            this.checkForEndboss();
+            //this.checkForEndboss();
         }, 50);
     }
 
