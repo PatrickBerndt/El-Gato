@@ -109,12 +109,12 @@ class World {
             this.checkCollisionBox();
             this.checkIfOutsiteLevel();
             this.collisionWithCollectFish();
-            //this.checkForEndboss();
+            this.checkForEndboss();
         }, 50);
     }
 
     checkForEndboss(){
-        if(this.character.x <= 5000){
+        if(this.character.x <= 4500){
             this.gameMusic.play();
             this.bossMusic.pause();
         }else if(!this.boss[0].isDead()){
@@ -156,7 +156,8 @@ class World {
             let difference = enemy.x - this.character.x;
             if(difference <= 400 && !(difference <= 200)){
                 if(enemy instanceof Endboss){
-                    enemy.attackCharacter = true;
+                    enemy.toClose = true;
+                    enemy.attackCharacter = false;
                     enemy.enemieDirection = 0.9;
                 }else{
                     enemy.toClose = true;
@@ -165,7 +166,8 @@ class World {
                 
             }else if(difference >= -400 && !(difference >= -200)){
                 if(enemy instanceof Endboss){
-                    enemy.attackCharacter = true;
+                    enemy.toClose = true;
+                    enemy.attackCharacter = false;
                     enemy.enemieDirection = 0.1;
                 }else{
                     enemy.toClose = true;
@@ -174,9 +176,11 @@ class World {
                 
             }else if(difference <= 200 && !(difference <= 0)){
                 enemy.toClose = true;
+                enemy.attackCharacter = true;
                 enemy.enemieDirection = 0.9;
             }else if(difference >= -200 && !(difference >= 0)){
                 enemy.toClose = true;
+                enemy.attackCharacter = true;
                 enemy.enemieDirection = 0.1;
             }else if((this.level.level_end - enemy.x) <= 400 ){
                 enemy.toClose = true;
@@ -229,12 +233,12 @@ class World {
                 if(fish.isColliding(enemy,0,0,40,0) && !this.isImune){
                     
                     enemy.isHurt= true;
-                    //this.getImune(1000);
+                    this.getImune(1000);
                     if(enemy instanceof Rat){
                         enemy.hit(50);
                         this.ratHurtSound.play();
                     }else if(enemy instanceof Endboss){
-                        enemy.hit(100);
+                        enemy.hit(10);
                         this.bossHurtSound.play();
                     }
                     setTimeout(() => {
