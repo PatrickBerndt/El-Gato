@@ -45,13 +45,14 @@ class Endboss extends MovableObject {
     offset_height = 40;
     enemieDirection = 0;
     toClose = false; 
+    endzone= false;
     attackCharacter = false; 
     energy = 100;
 
     constructor(){
         
         super().loadImage('./img/boss/idle/Idle_1.png');
-        this.x = 6000 + Math.random()*500;
+        this.x = 6000 
         this.loadImages(this.IMAGES_WALK);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_ATTACK);
@@ -88,10 +89,10 @@ class Endboss extends MovableObject {
         }, 160);
         
         setInterval(()=>{
-            if(!this.isDead()){
-                if(this.enemieDirection <= 0.2){
+            if(!this.isDead() && this.endzone){
+                if(this.enemieDirection <= 0.2 ){
                     this.moveRight();
-                }else if(this.enemieDirection >= 0.8){
+                }else if(this.enemieDirection >= 0.8 ){
                     this.moveLeft();
                 }else{
                 }   

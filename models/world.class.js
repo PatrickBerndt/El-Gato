@@ -118,6 +118,7 @@ class World {
             this.gameMusic.play();
             this.bossMusic.pause();
         }else if(!this.boss[0].isDead()){
+            this.boss[0].endzone = true;
             this.gameMusic.pause();
             this.bossMusic.play();
         }
@@ -154,6 +155,7 @@ class World {
     checkPosition(enemies){
         enemies.forEach(enemy=>{
             let difference = enemy.x - this.character.x;
+
             if(difference <= 400 && !(difference <= 200)){
                 if(enemy instanceof Endboss){
                     enemy.toClose = true;
