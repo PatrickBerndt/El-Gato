@@ -1,61 +1,61 @@
 class Character extends MovableObject{
 
 IMAGES_IDLE =[
-        './img/cat01/idle/cat01_idle_1.png',
-        './img/cat01/idle/cat01_idle_2.png',
-        './img/cat01/idle/cat01_idle_3.png',
-        './img/cat01/idle/cat01_idle_4.png',
-        './img/cat01/idle/cat01_idle_5.png',
-        './img/cat01/idle/cat01_idle_6.png',
-        './img/cat01/idle/cat01_idle_7.png',
-        './img/cat01/idle/cat01_idle_8.png',        
+        `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_1.png`,
+        `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_2.png`,
+        `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_3.png`,
+        `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_4.png`,
+        `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_5.png`,
+        `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_6.png`,
+        `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_7.png`,
+        `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_8.png`,        
     ];
     IMAGES_WALK =[
-        './img/cat01/walk/cat01_walk_1.png',
-        './img/cat01/walk/cat01_walk_2.png',
-        './img/cat01/walk/cat01_walk_3.png',
-        './img/cat01/walk/cat01_walk_4.png',
-        './img/cat01/walk/cat01_walk_5.png',
-        './img/cat01/walk/cat01_walk_6.png',
-        './img/cat01/walk/cat01_walk_7.png',
-        './img/cat01/walk/cat01_walk_8.png',
+        `./img/cat0${characterNumber}/walk/cat0${characterNumber}_walk_1.png`,
+        `./img/cat0${characterNumber}/walk/cat0${characterNumber}_walk_2.png`,
+        `./img/cat0${characterNumber}/walk/cat0${characterNumber}_walk_3.png`,
+        `./img/cat0${characterNumber}/walk/cat0${characterNumber}_walk_4.png`,
+        `./img/cat0${characterNumber}/walk/cat0${characterNumber}_walk_5.png`,
+        `./img/cat0${characterNumber}/walk/cat0${characterNumber}_walk_6.png`,
+        `./img/cat0${characterNumber}/walk/cat0${characterNumber}_walk_7.png`,
+        `./img/cat0${characterNumber}/walk/cat0${characterNumber}_walk_8.png`,
     ];
     IMAGES_FALL = [
-        './img/cat01/fall/cat01_fall_1.png',
-        './img/cat01/fall/cat01_fall_2.png',
-        './img/cat01/fall/cat01_fall_3.png'
+        `./img/cat0${characterNumber}/fall/cat0${characterNumber}_fall_1.png`,
+        `./img/cat0${characterNumber}/fall/cat0${characterNumber}_fall_2.png`,
+        `./img/cat0${characterNumber}/fall/cat0${characterNumber}_fall_3.png`
     ];
     IMAGES_JUMP = [
-        './img/cat01/jump/cat01_jump_1.png',
-        './img/cat01/jump/cat01_jump_2.png',
-        './img/cat01/jump/cat01_jump_3.png',
-        './img/cat01/jump/cat01_jump_4.png',
+        `./img/cat0${characterNumber}/jump/cat0${characterNumber}_jump_1.png`,
+        `./img/cat0${characterNumber}/jump/cat0${characterNumber}_jump_2.png`,
+        `./img/cat0${characterNumber}/jump/cat0${characterNumber}_jump_3.png`,
+        `./img/cat0${characterNumber}/jump/cat0${characterNumber}_jump_4.png`,
     ];
     IMAGES_ATTACK = [
-        './img/cat01/attack/cat01_attack_1.png',
-        './img/cat01/attack/cat01_attack_2.png',
-        './img/cat01/attack/cat01_attack_3.png',
-        './img/cat01/attack/cat01_attack_4.png',
-        './img/cat01/attack/cat01_attack_5.png',
-        './img/cat01/attack/cat01_attack_6.png',
-        './img/cat01/attack/cat01_attack_7.png'
+        `./img/cat0${characterNumber}/attack/cat0${characterNumber}_attack_1.png`,
+        `./img/cat0${characterNumber}/attack/cat0${characterNumber}_attack_2.png`,
+        `./img/cat0${characterNumber}/attack/cat0${characterNumber}_attack_3.png`,
+        `./img/cat0${characterNumber}/attack/cat0${characterNumber}_attack_4.png`,
+        `./img/cat0${characterNumber}/attack/cat0${characterNumber}_attack_5.png`,
+        `./img/cat0${characterNumber}/attack/cat0${characterNumber}_attack_6.png`,
+        `./img/cat0${characterNumber}/attack/cat0${characterNumber}_attack_7.png`
     ];
     IMAGES_HURT = [
-        './img/cat01/hurt/cat01_hurt_1.png',
-        './img/cat01/hurt/cat01_hurt_2.png',
-        './img/cat01/hurt/cat01_hurt_3.png',
-        './img/cat01/hurt/cat01_hurt_4.png'
+        `./img/cat0${characterNumber}/hurt/cat0${characterNumber}_hurt_1.png`,
+        `./img/cat0${characterNumber}/hurt/cat0${characterNumber}_hurt_2.png`,
+        `./img/cat0${characterNumber}/hurt/cat0${characterNumber}_hurt_3.png`,
+        `./img/cat0${characterNumber}/hurt/cat0${characterNumber}_hurt_4.png`
         
     ];
     IMAGES_DEATH = [
-        './img/cat01/die/cat01_die_1.png',
-        './img/cat01/die/cat01_die_2.png',
-        './img/cat01/die/cat01_die_3.png',
-        './img/cat01/die/cat01_die_4.png',
-        './img/cat01/die/cat01_die_5.png',
-        './img/cat01/die/cat01_die_6.png',
-        './img/cat01/die/cat01_die_7.png',
-        './img/cat01/die/cat01_die_8.png'
+        `./img/cat0${characterNumber}/die/cat0${characterNumber}_die_1.png`,
+        `./img/cat0${characterNumber}/die/cat0${characterNumber}_die_2.png`,
+        `./img/cat0${characterNumber}/die/cat0${characterNumber}_die_3.png`,
+        `./img/cat0${characterNumber}/die/cat0${characterNumber}_die_4.png`,
+        `./img/cat0${characterNumber}/die/cat0${characterNumber}_die_5.png`,
+        `./img/cat0${characterNumber}/die/cat0${characterNumber}_die_6.png`,
+        `./img/cat0${characterNumber}/die/cat0${characterNumber}_die_7.png`,
+        `./img/cat0${characterNumber}/die/cat0${characterNumber}_die_8.png`
     ];
     
     height = 160;
@@ -72,7 +72,8 @@ IMAGES_IDLE =[
     energy = 100 ;
 
     constructor(){
-        super().loadImage('./img/cat01/idle/cat01_idle_1.png');
+        super().loadImage(`./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_1.png`);
+
         this.loadImages(this.IMAGES_WALK);
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_FALL);

@@ -1,6 +1,7 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let characterNumber = 2;
 
 function init(){
     

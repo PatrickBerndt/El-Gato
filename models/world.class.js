@@ -162,8 +162,8 @@ class World {
     checkPosition(enemies){
         enemies.forEach(enemy=>{
             let difference = enemy.x - this.character.x;
-
-            if(difference <= 400 && !(difference <= 200)){
+            setTimeout(() => {
+              if(difference <= 400 && !(difference <= 200)){
                 if(enemy instanceof Endboss){
                     enemy.toClose = true;
                     enemy.attackCharacter = false;
@@ -194,7 +194,9 @@ class World {
             }else if((this.level.level_end - enemy.x) <= 400 ){
                 enemy.toClose = true;
                 enemy.enemieDirection = 0.9;
-            }
+            }  
+            }, 125);
+            
         })
     }
 
