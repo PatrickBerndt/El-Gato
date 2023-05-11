@@ -61,3 +61,33 @@ h1{
     font-size: 50px;
     cursor: pointer;
 }
+.selectscreen{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.selectscreen h2{
+    position: absolute;
+    font-size: 50px;
+    width: 300px;
+    bottom: 60px;
+    
+}
+.selectBG{
+    position: absolute;
+    z-index: -1;
+
+}
+.selectCharacter{
+    position: absolute;
+    align-items: unset;
+    cursor: pointer;
+    top: 46px;
+}
+.p50l{
+    left: 100px; 
+}
+.p50r{
+    right: 100px;
+}

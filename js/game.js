@@ -1,19 +1,25 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
-let characterNumber = 2;
+let characterNumber = 1;
 
 function init(){
     
     
 }
 
-
-function startGame(){
+function selectCharacter(index){
+    characterNumber = index;
     document.getElementById('playButton').classList.add('dNone');
     document.getElementById('coverimage').classList.add('dNone');
+    document.getElementById('wrapper').classList.remove('dNone');
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
+}
+
+function startGame(){
+    document.getElementById('wrapper').classList.add('dNone');
+   
 }
 
 function showEndScreen(){
