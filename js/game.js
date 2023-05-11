@@ -15,6 +15,19 @@ function startGame(){
     world = new World(canvas, keyboard);
 }
 
+function showEndScreen(){
+    document.getElementById('playButton').classList.remove('dNone');
+    document.getElementById('coverimage').classList.remove('dNone');
+    clearAllIntervals();
+    
+}
+
+function clearAllIntervals(){
+    for (let i = 1; i < 9999; i++){
+        window.clearInterval(i)
+    }; 
+}
+
 window.addEventListener('keydown', (event)=>{
     if(event.code == 'ArrowLeft'){
         keyboard.LEFT = true;

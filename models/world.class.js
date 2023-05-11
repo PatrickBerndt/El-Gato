@@ -114,13 +114,20 @@ class World {
     }
 
     checkForEndboss(){
-        if(this.character.x <= 4500){
+        if(this.character.x <= 4500 || this.boss[0].isDead()){
             this.gameMusic.play();
             this.bossMusic.pause();
         }else if(!this.boss[0].isDead()){
             this.boss[0].endzone = true;
             this.gameMusic.pause();
             this.bossMusic.play();
+        }
+        if(this.boss[0].isDead()){
+            setTimeout(() => {
+                showEndScreen();
+                this.gameMusic.pause()    
+            }, 2000);
+            ;
         }
         
     }
@@ -204,18 +211,19 @@ class World {
                     this.character.isHurt = false;
                 },1000);
             }else if(this.character.isColliding(enemy,0,0,25,0) && this.character.isFalling()){
-                enemy.hit(50);
+                
                enemy.isHurt= true;
-               
                if(!enemy.isDead()){
                     this.character.speed_y = 20;
                     if(enemy instanceof Rat){
                         this.ratHurtSound.play();
+                        enemy.hit(50);
                     }else if(enemy instanceof Endboss){
                         this.bossHurtSound.play();
+                        enemy.hit(20);
                     }
-                    
                }
+               this.getImune(1000);
                 setTimeout(() => {
                    enemy.isHurt = false;
                 },1000);
@@ -232,7 +240,7 @@ class World {
     checkCollidingFish(enemies){
         enemies.forEach(enemy =>{
             this.level.fish.forEach(fish =>{
-                if(fish.isColliding(enemy,0,0,40,0) && !this.isImune){
+                if(fish.isColliding(enemy,0,0,40,0) && !this.isImune && !enemy.isDead()){
                     
                     enemy.isHurt= true;
                     this.getImune(1000);
@@ -240,7 +248,7 @@ class World {
                         enemy.hit(50);
                         this.ratHurtSound.play();
                     }else if(enemy instanceof Endboss){
-                        enemy.hit(10);
+                        enemy.hit(20);
                         this.bossHurtSound.play();
                     }
                     setTimeout(() => {
