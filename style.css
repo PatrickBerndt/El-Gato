@@ -84,10 +84,11 @@ h1{
     align-items: unset;
     cursor: pointer;
     top: 46px;
+    
 }
 .p50l{
-    left: 100px; 
+    left: 90px; 
 }
 .p50r{
-    right: 100px;
+    right: 90px;
 }
