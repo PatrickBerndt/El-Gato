@@ -31,6 +31,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="init()">
+    <div id="youWon" class="wrapper dNone">
+        <h2>You Won !!!!</h2>
+        <button class="startButton" onclick="startGame()">Restart</button>
+        <img class="selectBG" src="img/objects/endScreen.png">
+    </div>
+    <div id="youLost" class="wrapper dNone">
+        <h2>You Lost !!!!</h2>
+        <button class="startButton" onclick="startGame()">Restart</button>
+        <img class="selectBG" src="img/objects/endScreen.png">
+    </div>
     <div id="selectscreen" class="selectscreen dNone">
         <h2>pick your character</h2>
         <button id="startButton" class="startButton" onclick="playGame()"> Start Game</button>
@@ -42,7 +52,7 @@
         <img onclick="selectCharacter(3)" class="selectCharacter p50l" src="img/cat03/sit/cat03_sit_6.png">
         <img class="selectBG" src="img/objects/select.png">
     </div>
-    <div id="wrapper" class="wrapper">
+    <div id="wrapper" class="wrapper ">
         <button id="playButton" class="playButton" onclick="startGame()">Play</button>
         <img id="coverimage" class="coverImage" src="img/objects/front.png">
         <canvas id="canvas"  width="720" height="480"></canvas>    

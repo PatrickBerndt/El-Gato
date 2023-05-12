@@ -67,6 +67,13 @@ h1{
     justify-content: center;
     align-items: center;
 }
+.wrapper h2{
+    position: absolute;
+    font-size: 90px;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+}
 .coverImage{
     position: absolute;
     z-index: 1;

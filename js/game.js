@@ -19,13 +19,27 @@ function selectCharacter(index){
 function startGame(){
     document.getElementById('wrapper').classList.add('dNone');
     document.getElementById('selectscreen').classList.remove('dNone');
-   
+    document.getElementById('startButton').classList.remove('dNone');
+    document.getElementById('youWon').classList.add('dNone');
+    document.getElementById('youLost').classList.add('dNone');
+}
+
+function lostGame(){
+    document.getElementById('wrapper').classList.add('dNone');
+    document.getElementById('youLost').classList.remove('dNone');
+    
+}
+function wonGame(){
+    document.getElementById('wrapper').classList.add('dNone');
+    document.getElementById('youWon').classList.remove('dNone');
+    
 }
 
 function playGame(){
     document.getElementById('playButton').classList.add('dNone');
     document.getElementById('coverimage').classList.add('dNone');
     document.getElementById('startButton').classList.add('dNone');
+    document.getElementById('selectscreen').classList.add('dNone');
     document.getElementById('wrapper').classList.remove('dNone');
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);

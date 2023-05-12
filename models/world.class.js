@@ -134,16 +134,16 @@ class World {
             this.bossMusic.pause();
             this.winSound.play();
             setTimeout(() => {
-                showEndScreen();
-   
+                this.winSound.pause();
+                wonGame();
             }, 3500);
         }else if(this.character.isDead()){
             this.gameMusic.pause(); 
             this.bossMusic.pause();   
             this.looseSound.play();
             setTimeout(() => {
-                showEndScreen();
-                
+                this.looseSound.pause();
+                lostGame();
             }, 2000);
         }
     }
