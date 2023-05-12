@@ -32,6 +32,8 @@ class World {
     gameMusic = new Audio('audio/gameSound.mp3');
     bossMusic = new Audio('audio/bossSound.mp3');
     crackingSound = new Audio('audio/cracking.mp3')
+    winSound = new Audio('audio/winSound.mp3');
+    looseSound = new Audio('audio/looseSound.mp3');
 
     bgLayer1 = new BackgroundObject('./img/background/Background_0.png');
     bgLayer2 = new BackgroundObject('img/background/Background_1.png');
@@ -110,7 +112,8 @@ class World {
             this.checkIfOutsiteLevel();
             this.collisionWithCollectFish();
             this.checkForEndboss();
-        }, 50);
+            this.checkForWin();
+        }, 25);
     }
 
     checkForEndboss(){
@@ -122,14 +125,27 @@ class World {
             this.gameMusic.pause();
             this.bossMusic.play();
         }
+        
+    }
+
+    checkForWin(){
         if(this.boss[0].isDead()){
+            this.gameMusic.pause();
+            this.bossMusic.pause();
+            this.winSound.play();
             setTimeout(() => {
                 showEndScreen();
-                this.gameMusic.pause()    
+   
+            }, 3500);
+        }else if(this.character.isDead()){
+            this.gameMusic.pause(); 
+            this.bossMusic.pause();   
+            this.looseSound.play();
+            setTimeout(() => {
+                showEndScreen();
+                
             }, 2000);
-            ;
         }
-        
     }
 
     checkThrowObject(){
@@ -205,7 +221,7 @@ class World {
     checkIsColliding(enemies){
         enemies.forEach(enemy => {
             if(this.character.isColliding(enemy,0,0,25,0) && !this.character.isFalling() && !enemy.isDead() && !this.isImune){
-                this.character.hit(5);
+                this.character.hit(20);
                 this.healthBar.statusFill(this.character.energy);
                 this.character.isHurt= true;
                 this.getImune(2000);

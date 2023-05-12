@@ -107,7 +107,7 @@ IMAGES_IDLE =[
         setInterval(() => {
             this.walkingSound.pause();
             if(this.isDead()){
-                this.loadImage('../img/cat01/die/cat01_die_8.png')
+                this.loadImage(`./img/cat0${characterNumber}/die/cat0${characterNumber}_die_8.png`)
             }else if(this.isAboveGround() && this.speed_y < 0){
                 this.playAnimation(this.IMAGES_FALL);
             }else if(this.isAboveGround() && this.speed_y > 0){

@@ -39,7 +39,7 @@ class Rat extends MovableObject {
     constructor(){
         
         super().loadImage('./img/rat01/idle/Idle_1.png');
-        this.x = 200 + Math.random()*6000;
+        this.x = 400 + Math.random()*6000;
         this.loadImages(this.IMAGES_WALK);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEATH);
