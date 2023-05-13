@@ -46,8 +46,6 @@ function playGame(){
 }
 
 function showEndScreen(){
-    document.getElementById('playButton').classList.remove('dNone');
-    document.getElementById('coverimage').classList.remove('dNone');
     clearAllIntervals();
     location.reload();
 }
