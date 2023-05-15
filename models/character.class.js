@@ -68,7 +68,7 @@ IMAGES_IDLE =[
     currentImage = 0;
     world;
     walkingSound = new Audio('audio/walk.mp3');
-   
+    triggert = false;
     energy = 100 ;
 
     constructor(){
@@ -101,7 +101,12 @@ IMAGES_IDLE =[
             if(this.world.keyboard.UP &! this.isAboveGround() && !this.isDead()){
                 this.jump();
             }
+            if(this.world.keyboard.SPACE && !this.isDead() ){
+                this.triggert= true;
+                
+            }
             this.world.camera_x = -this.x +100;
+            this.triggerAnimation();
         }, 16);
 
         setInterval(() => {
@@ -120,12 +125,15 @@ IMAGES_IDLE =[
                     this.playAnimation(this.IMAGES_IDLE);
                 }   
             }
-            if(this.world.keyboard.SPACE && !this.isDead() ){
-                this.playSingleAnimation(this.IMAGES_ATTACK);
-            }
             if(this.isHurt && !this.isDead()){
                 this.playSingleAnimation(this.IMAGES_HURT);
             }
         }, 160);
     }
+
+    triggerAnimation(){
+        if(this.triggert){
+        this.playSingleAnimation(this.IMAGES_ATTACK); 
+        }
+    };
 }

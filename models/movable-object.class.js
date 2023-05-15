@@ -22,7 +22,8 @@ class MovableObject extends DrawableObject {
             this.img = this.imageCache[path];
             this.animationCounter++;   
         }else{
-            this.animationCounter = 0;  
+            this.animationCounter = 0;
+            this.world.character.triggert = false;  
         }
     }
 
