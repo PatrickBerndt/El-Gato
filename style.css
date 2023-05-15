@@ -139,6 +139,16 @@ h1{
     height: 160px;
     
 }
+.overlay{
+    position: absolute;
+    z-index: 10;
+    height: 480px;
+    width: 720px;
+
+    align-items: end;
+    justify-content: space-between;
+    display: flex;
+}
 .p50l{
     left: 90px; 
 }

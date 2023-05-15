@@ -31,6 +31,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="init()">
+    <div class="overlay dNone" id="overlay">
+        <img src="img/objects/space.png">
+        <div class="controlls">
+            <img src="img/objects/arrowLeft.png">
+            <img src="img/objects/arrowUP.png">
+            <img src="img/objects/arrowRight.png">  
+        </div>
+    
+        
+    </div>
     <div id="youWon" class="wrapper dNone">
         <h2>You Won !!!!</h2>
         <button class="startButton" onclick="showEndScreen()">Restart</button>
@@ -52,7 +62,7 @@
         <img onclick="selectCharacter(3)" class="selectCharacter p50l" src="img/cat03/sit/cat03_sit_6.png">
         <img class="selectBG" src="img/objects/select.png">
     </div>
-    <div id="wrapper" class="wrapper ">
+    <div id="wrapper" class="wrapper">
         <button id="playButton" class="playButton" onclick="startGame()">Play</button>
         <img id="coverimage" class="coverImage" src="img/objects/front.png">
         <canvas id="canvas"  width="720" height="480"></canvas>    
