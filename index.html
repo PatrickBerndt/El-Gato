@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="init()">
+<div id="content">
     <div class="overlay dNone" id="overlay">
         <img src="img/objects/space.png">
         <div class="controlls">
@@ -63,10 +64,11 @@
         <img class="selectBG" src="img/objects/select.png">
     </div>
     <div id="wrapper" class="wrapper">
+        <button id="fullscreen" class="fullscreen" onclick="makeFullscreen()"><img src="img/objects/fullscreen.png"></button>
         <button id="playButton" class="playButton" onclick="startGame()">Play</button>
         <img id="coverimage" class="coverImage" src="img/objects/front.png">
         <canvas id="canvas"  width="720" height="480"></canvas>    
     </div>
-    
+</div>    
 </body>
 </html>

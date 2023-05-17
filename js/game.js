@@ -2,6 +2,7 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let characterNumber = 1;
+let isFullscreen= false;
 
 function init(){
     
@@ -14,6 +15,19 @@ function selectCharacter(index){
     }
     characterNumber = index;
     document.getElementById(`arrow${index}`).classList.remove('dNone');
+}
+
+function makeFullscreen(){
+    if(isFullscreen){
+        document.documentElement.exitFullscreen();
+        isFullscreen = false; 
+    }else{
+       document.getElementById('content').requestFullscreen(); 
+       isFullscreen = true;
+    }
+    
+    
+   
 }
 
 function startGame(){
