@@ -5,8 +5,6 @@ let characterNumber = 1;
 let isFullscreen= false;
 
 function init(){
-    
-    
 }
 
 function selectCharacter(index){
@@ -19,15 +17,12 @@ function selectCharacter(index){
 
 function makeFullscreen(){
     if(isFullscreen){
-        document.documentElement.exitFullscreen();
+        document.exitFullscreen();
         isFullscreen = false; 
     }else{
        document.getElementById('content').requestFullscreen(); 
        isFullscreen = true;
     }
-    
-    
-   
 }
 
 function startGame(){
@@ -41,12 +36,12 @@ function startGame(){
 function lostGame(){
     document.getElementById('wrapper').classList.add('dNone');
     document.getElementById('youLost').classList.remove('dNone');
-    
+    clearAllIntervals();
 }
 function wonGame(){
     document.getElementById('wrapper').classList.add('dNone');
     document.getElementById('youWon').classList.remove('dNone');
-    
+    clearAllIntervals();
 }
 
 function playGame(){

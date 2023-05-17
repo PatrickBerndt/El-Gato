@@ -23,7 +23,10 @@ class MovableObject extends DrawableObject {
             this.animationCounter++;   
         }else{
             this.animationCounter = 0;
-            this.world.character.triggert = false;  
+            if(this instanceof Character){
+                this.world.character.triggert = false;
+            }
+              
         }
     }
 

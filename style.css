@@ -16,23 +16,23 @@
     }
 @keyframes bounce{
     0%{
-        top: -10px;
+        bottom: 130px;
         scale: 100%;
     }
     25%{
-        top: -30px;
+        bottom: 150px;
         scale: 110%;
     }
     50%{
-        top: -10px;
+        bottom: 130px;
         scale: 100%;
     }
     75%{
-        top: -30px;
+        bottom: 150px;
         scale: 105%;
     }
     100%{
-        top: -10px;
+        bottom: 130px;
         scale: 100%;
     }
     }
@@ -95,14 +95,16 @@ h1{
 .coverImage{
     position: absolute;
     z-index: 1;
+    width: 720px;
+    height: 480px;
 }
 .playButton{
     position: absolute;
     z-index: 2;
     background-color: transparent;border: 2px solid white;
     color: #ffffff;
-    width: 150px !important;
-    height: 70px !important;
+    width: 150px;
+    height: 70px;
     border-radius: 30px;
     font-family: 'SmoochSans-Thin';
     font-size: 50px;
@@ -115,7 +117,7 @@ h1{
     color: #ffffff;
     width: 150px;
     height: 50px;
-    top: -100px;
+    top: 150px;
     border-radius: 30px;
     font-family: 'SmoochSans-Thin';
     font-size: 30px;
@@ -126,22 +128,26 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 720px;
+    height: 480px;
 }
 .selectscreen h2{
     position: absolute;
     font-size: 50px;
     width: 300px;
-    bottom: 60px;
+    top: 30px;
 }
 .selectBG{
     position: absolute;
     z-index: -1;
+    width: 720px;
+    height: 480px;
 }
 .selectArrow{
     position: absolute;
     width: 63px;
     height: 100px;
-    top: -10px;
+    bottom: 130px;
     animation-timing-function: ease-in-out;
     animation-name: bounce;
     animation-duration: 2s;
@@ -150,7 +156,7 @@ h1{
 .selectCharacter{
     position: absolute;
     cursor: pointer;
-    top: 46px;
+    bottom: 34px;
     width: 160px;
     height: 160px;
 }
@@ -164,14 +170,14 @@ h1{
     display: flex;
 }
 .p50l{
-    left: 90px; 
+    left: 110px; 
 }
 .p50r{
-    right: 90px;
+    right: 110px;
 }
 .p60l{
-    left: 140px; 
+    left: 160px; 
 }
 .p60r{
-    right: 140px;
+    right: 160px;
 }
