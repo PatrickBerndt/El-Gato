@@ -81,8 +81,8 @@ h1{
     z-index: 10;
     background-color: transparent;
     border: transparent;
-    top: 0px;
-    right: 10px;
+    top: 20px;
+    right: 20px;
     cursor: pointer;
 }
 .fullscreen img{
@@ -110,6 +110,9 @@ h1{
     font-size: 50px;
     cursor: pointer;
 }
+.playButton:hover{
+    box-shadow: 0px 0px 10px rgb(255, 255, 255), inset 0px 0px 10px rgb(255, 255, 255) ;
+}
 .startButton{
     position: absolute;
     z-index: 2;
@@ -122,6 +125,9 @@ h1{
     font-family: 'SmoochSans-Thin';
     font-size: 30px;
     cursor: pointer;
+}
+.startButton:hover{
+    box-shadow: 0px 0px 10px rgb(255, 255, 255), inset 0px 0px 10px rgb(255, 255, 255) ;
 }
 .selectscreen{
     position: relative;

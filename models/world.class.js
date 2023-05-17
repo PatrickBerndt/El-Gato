@@ -14,12 +14,12 @@ class World {
     keyboard;
     camera_x = 0;
     energy = 100;
-    healthBar = new Statusbar(30,20,'red');
-    milkBar = new Statusbar(30,50, 'blue');
-    fishBar = new Statusbar(30,80,'green')
-    overlay = [new StatusOverlay(30,20), new StatusSymbol (5,15,30,30,'heart'),
-                new StatusOverlay(30,50), new StatusSymbol (5,45,30,30,'milk'),
-                new StatusOverlay(30,80), new StatusSymbol (10,75,20,30,'fish')];
+    healthBar = new Statusbar(40,20,'red');
+    milkBar = new Statusbar(40,50, 'blue');
+    fishBar = new Statusbar(40,80,'green')
+    overlay = [new StatusOverlay(40,20), new StatusSymbol (13,15,30,30,'heart'),
+                new StatusOverlay(40,50), new StatusSymbol (13,45,30,30,'milk'),
+                new StatusOverlay(40,80), new StatusSymbol (18,75,20,30,'fish')];
     throwFish =[];
     isImune=false;
     fillMilk=0;
@@ -228,7 +228,7 @@ class World {
                 setTimeout(() => {
                     this.character.isHurt = false;
                 },1000);
-            }else if(this.character.isColliding(enemy,0,0,25,0) && this.character.isFalling()){
+            }else if(this.character.isColliding(enemy,0,0,50,0) && this.character.isFalling()){
                 
                enemy.isHurt= true;
                if(!enemy.isDead()){
@@ -325,8 +325,8 @@ class World {
                     this.fillFish += 10;
                     this.fishBar.statusFill(this.fillFish);
                 }
-                   this.collectSound.play();
-                this.level.collectFish.splice(index, 1);  
+                this.collectSound.play();
+                this.level.collectFish.splice(index, 1); 
             }
         });
     }

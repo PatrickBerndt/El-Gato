@@ -20,7 +20,7 @@ function makeFullscreen(){
         document.exitFullscreen();
         isFullscreen = false; 
     }else{
-       document.getElementById('content').requestFullscreen(); 
+       document.getElementById('canvas').requestFullscreen(); 
        isFullscreen = true;
     }
 }
