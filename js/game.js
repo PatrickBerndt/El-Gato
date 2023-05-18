@@ -31,6 +31,7 @@ function startGame(){
     document.getElementById('startButton').classList.remove('dNone');
     document.getElementById('youWon').classList.add('dNone');
     document.getElementById('youLost').classList.add('dNone');
+    menuSound.play();
 }
 
 function lostGame(){
@@ -52,6 +53,7 @@ function playGame(){
     document.getElementById('wrapper').classList.remove('dNone');
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
+    menuSound.pause();
 }
 
 function showEndScreen(){

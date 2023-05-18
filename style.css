@@ -47,6 +47,7 @@ body{
     justify-content: center;
     align-items: center;
     background-image: url('img/background/FrontBackground.png');
+    background-size: cover;
 }
 canvas{
     position: absolute;

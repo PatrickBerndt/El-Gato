@@ -25,15 +25,7 @@ class World {
     fillMilk=0;
     fillFish=0;
 
-    attackingSound = new Audio('audio/whoosh.mp3');
-    collectSound = new Audio('audio/drop.mp3');
-    ratHurtSound = new Audio('audio/mouse.mp3');
-    bossHurtSound = new Audio('audio/hurt_2.mp3');
-    gameMusic = new Audio('audio/gameSound.mp3');
-    bossMusic = new Audio('audio/bossSound.mp3');
-    crackingSound = new Audio('audio/cracking.mp3')
-    winSound = new Audio('audio/winSound.mp3');
-    looseSound = new Audio('audio/looseSound.mp3');
+    
 
     bgLayer1 = new BackgroundObject('./img/background/Background_0.png');
     bgLayer2 = new BackgroundObject('img/background/Background_1.png');
@@ -49,7 +41,7 @@ class World {
         this.setWorld();
         this.run();
         
-        this.gameMusic.volume = 0.5;
+        gameMusic.volume = 0.5;
     }
 
     offsetBackground(){
@@ -118,31 +110,31 @@ class World {
 
     checkForEndboss(){
         if(this.character.x <= 4500 || this.boss[0].isDead()){
-            this.gameMusic.play();
-            this.bossMusic.pause();
+            gameMusic.play();
+            bossMusic.pause();
         }else if(!this.boss[0].isDead()){
             this.boss[0].endzone = true;
-            this.gameMusic.pause();
-            this.bossMusic.play();
+            gameMusic.pause();
+            bossMusic.play();
         }
         
     }
 
     checkForWin(){
         if(this.boss[0].isDead()){
-            this.gameMusic.pause();
-            this.bossMusic.pause();
-            this.winSound.play();
+            gameMusic.pause();
+            bossMusic.pause();
+            winSound.play();
             setTimeout(() => {
-                this.winSound.pause();
+                winSound.pause();
                 wonGame();
             }, 3500);
         }else if(this.character.isDead()){
-            this.gameMusic.pause(); 
-            this.bossMusic.pause();   
-            this.looseSound.play();
+            gameMusic.pause(); 
+            bossMusic.pause();   
+            looseSound.play();
             setTimeout(() => {
-                this.looseSound.pause();
+                looseSound.pause();
                 lostGame();
             }, 2000);
         }
@@ -161,7 +153,7 @@ class World {
                 this.fillFish -= 5;
                 this.fishBar.statusFill(this.fillFish);
             }
-            this.attackingSound.play();
+            attackingSound.play();
         }
     }
 
@@ -220,7 +212,7 @@ class World {
 
     checkIsColliding(enemies){
         enemies.forEach(enemy => {
-            if(this.character.isColliding(enemy,0,0,25,0) && !this.character.isFalling() && !enemy.isDead() && !this.isImune){
+            if(this.character.isColliding(enemy,0,0,50,0) && !this.character.isFalling() && !enemy.isDead() && !this.isImune){
                 this.character.hit(20);
                 this.healthBar.statusFill(this.character.energy);
                 this.character.isHurt= true;
@@ -234,10 +226,10 @@ class World {
                if(!enemy.isDead()){
                     this.character.speed_y = 20;
                     if(enemy instanceof Rat){
-                        this.ratHurtSound.play();
+                        ratHurtSound.play();
                         enemy.hit(50);
                     }else if(enemy instanceof Endboss){
-                        this.bossHurtSound.play();
+                        bossHurtSound.play();
                         enemy.hit(20);
                     }
                }
@@ -285,11 +277,11 @@ class World {
                 this.getImune(500);
                 if(!box.isDead()){
                     this.character.speed_y = 20;
-                    this.crackingSound.play();
+                    crackingSound.play();
                }
                if(box.isDead()){
                 this.thwowCollectFish(box);
-                this.crackingSound.play();
+                crackingSound.play();
                 setTimeout(() => {
                     this.level.boxes.splice(index, 1);   
                 }, 2000);
@@ -313,7 +305,7 @@ class World {
                 this.fillMilk += 10;
                 this.milkBar.statusFill(this.fillMilk);
               }
-              this.collectSound.play();
+              collectSound.play();
               this.level.milk.splice(index, 1);
             }
         });
@@ -325,7 +317,7 @@ class World {
                     this.fillFish += 10;
                     this.fishBar.statusFill(this.fillFish);
                 }
-                this.collectSound.play();
+                collectSound.play();
                 this.level.collectFish.splice(index, 1); 
             }
         });
