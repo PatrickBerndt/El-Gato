@@ -54,6 +54,10 @@
         <img class="selectBG" src="img/objects/endScreen.png">
     </div>
     <div id="selectscreen" class="selectscreen dNone">
+        <div class=" gameplayOverlay dNone" id="gameplayOverlay">
+            <button class="optionButton"  onclick="gameplayWindow()">Back</button>
+            <img src="img/objects/gameplay.png">
+        </div>
         <div class="optionOverlay dNone" id="optionOverlay">
         <div class="optionWindow">
             <h4>Options</h4>
@@ -71,14 +75,13 @@
                 <button class="optionButton" id="muteButton" onclick="muteSound()">Mute</button>
                 <button class="optionButton"  onclick="optionWindow()">Back</button>  
             </div>
-            
         </div>
 
         </div>
         <h2>pick your character</h2>
         <button id="startButton" class="startButton" onclick="playGame()"> Start Game</button>
         <button id="optionMenuButton" class="optionMenuButton" onclick="optionWindow()"> Options</button>
-
+        <button id="gameplayButton" class="gameplayButton" onclick="gameplayWindow()"> Gameplay</button>
         <img id="arrow1" class="selectArrow p60l" src="img/objects/arrow.png">
         <img id="arrow2" class="selectArrow dNone" src="img/objects/arrow.png">
         <img id="arrow3" class="selectArrow p60r dNone" src="img/objects/arrow.png">
@@ -88,9 +91,10 @@
         <img class="selectBG" src="img/objects/select.png">
     </div>
     <div id="wrapper" class="wrapper">
-        <button id="fullscreen" class="fullscreen" onclick="makeFullscreen()"><img src="img/objects/fullscreen.png"></button>
+        
         <button id="playButton" class="playButton" onclick="startGame()">Play</button>
         <img id="coverimage" class="coverImage" src="img/objects/front.png">
+        <button id="fullscreen" class="fullscreen" onclick="makeFullscreen()"><img src="img/objects/fullscreen.png"></button>
         <canvas id="canvas"  width="720" height="480"></canvas>    
     </div>
 </div>    

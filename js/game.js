@@ -28,6 +28,11 @@ function makeFullscreen(){
 
 function optionWindow(){
     document.getElementById('optionOverlay').classList.toggle('dNone');
+    
+}
+
+function gameplayWindow(){
+    document.getElementById('gameplayOverlay').classList.toggle('dNone');
 }
 
 function startGame(){
