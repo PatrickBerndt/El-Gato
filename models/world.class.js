@@ -40,8 +40,6 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        
-        gameMusic.volume = 0.5;
     }
 
     offsetBackground(){
@@ -256,10 +254,10 @@ class World {
                     this.getImune(1000);
                     if(enemy instanceof Rat){
                         enemy.hit(50);
-                        this.ratHurtSound.play();
+                        ratHurtSound.play();
                     }else if(enemy instanceof Endboss){
                         enemy.hit(20);
-                        this.bossHurtSound.play();
+                        bossHurtSound.play();
                     }
                     setTimeout(() => {
                         enemy.isHurt = false;

@@ -5,6 +5,7 @@ let characterNumber = 1;
 let isFullscreen= false;
 
 function init(){
+    
 }
 
 function selectCharacter(index){
@@ -23,6 +24,10 @@ function makeFullscreen(){
        document.getElementById('canvas').requestFullscreen(); 
        isFullscreen = true;
     }
+}
+
+function optionWindow(){
+    document.getElementById('optionOverlay').classList.toggle('dNone');
 }
 
 function startGame(){

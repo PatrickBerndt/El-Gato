@@ -54,8 +54,31 @@
         <img class="selectBG" src="img/objects/endScreen.png">
     </div>
     <div id="selectscreen" class="selectscreen dNone">
+        <div class="optionOverlay dNone" id="optionOverlay">
+        <div class="optionWindow">
+            <h4>Options</h4>
+            <div class="slidecontainer">
+                <p>Music</p>
+                <input type="range" min="1" max="100" value="50" class="slider" id="music" onmousemove="volumeControllMusic(this.value/100)"
+                onchange="volumeControllMusic(this.value/100)">
+            </div>
+            <div class="slidecontainer">
+                <p>FX-Sounds</p>
+                <input type="range" min="1" max="100" value="50" class="slider" id="fx-sounds"onmousemove="volumeControllFX(this.value/100)"
+                onchange="volumeControllFX(this.value/100)">
+            </div>
+            <div>
+                <button class="optionButton" id="muteButton" onclick="muteSound()">Mute</button>
+                <button class="optionButton"  onclick="optionWindow()">Back</button>  
+            </div>
+            
+        </div>
+
+        </div>
         <h2>pick your character</h2>
         <button id="startButton" class="startButton" onclick="playGame()"> Start Game</button>
+        <button id="optionMenuButton" class="optionMenuButton" onclick="optionWindow()"> Options</button>
+
         <img id="arrow1" class="selectArrow p60l" src="img/objects/arrow.png">
         <img id="arrow2" class="selectArrow dNone" src="img/objects/arrow.png">
         <img id="arrow3" class="selectArrow p60r dNone" src="img/objects/arrow.png">
