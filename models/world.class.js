@@ -12,6 +12,7 @@ class World {
     canvas;
     ctx;
     keyboard;
+    controllOverlay = new ControllOverlay();
     camera_x = 0;
     energy = 100;
     healthBar = new Statusbar(40,20,'red');
@@ -81,6 +82,7 @@ class World {
         this.addToMap(this.healthBar);
         this.addToMap(this.milkBar);
         this.addToMap(this.fishBar);
+        this.addToMap(this.controllOverlay);
         this.addObjectToMap(this.overlay);
         let self = this;
         requestAnimationFrame(function(){
