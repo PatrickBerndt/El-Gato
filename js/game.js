@@ -5,7 +5,39 @@ let characterNumber = 1;
 let isFullscreen= false;
 
 function init(){
-    
+    checkLandscapeMode();
+    fitToScreen();
+}
+
+window.addEventListener("orientationchange", () => {
+    checkLandscapeMode();
+});
+
+window.addEventListener('resize', () => {
+    fitToScreen();
+});
+
+function fitToScreen(){
+    var bodyWidth = document.getElementById('body').clientWidth;
+    var bodyHeight = document.getElementById('body').clientHeight;
+    if(bodyWidth < 725 ){
+        let zoomFactorW =  (bodyWidth/725);
+        document.getElementById('content').style = `zoom:${zoomFactorW}; ,-moz-transform: scale(${zoomFactorW});`;
+    }else if(bodyHeight < 485 ){
+        let zoomFactorH =  (bodyHeight/485);
+        document.getElementById('content').style = `zoom:${zoomFactorH}; ,-moz-transform: scale(${zoomFactorH});`;
+        console.log(zoomFactorH);
+    }
+};
+
+function checkLandscapeMode(){
+    if(screen.availHeight > screen.availWidth){
+        this.document.getElementById('rotate').classList.remove('dNone');
+        this.document.getElementById('content').classList.add('dNone');
+    }else{
+        this.document.getElementById('rotate').classList.add('dNone');
+        this.document.getElementById('content').classList.remove('dNone');
+    }
 }
 
 function selectCharacter(index){
@@ -16,12 +48,16 @@ function selectCharacter(index){
     document.getElementById(`arrow${index}`).classList.remove('dNone');
 }
 
+
+
 function makeFullscreen(){
     if(isFullscreen){
         document.exitFullscreen();
+        document.getElementById('winImg').classList.remove('stretchToFull');
         isFullscreen = false; 
     }else{
-       document.getElementById('canvas').requestFullscreen(); 
+       document.getElementById('youWon').requestFullscreen(); 
+       document.getElementById('winImg').classList.add('stretchToFull');
        isFullscreen = true;
     }
 }

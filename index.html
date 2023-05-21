@@ -31,8 +31,11 @@
     
     <link rel="stylesheet" href="style.css">
 </head>
-<body onload="init()">
-<div id="content">
+<body id="body" onload="init()">
+    <div id="rotate" class="rotate">
+        <h3>Please rotate your device</h3>
+    </div>
+<div id="content" class="dNone">
     <div class="overlay dNone" id="overlay">
         <img src="img/objects/space.png">
         <div class="controlls">
@@ -44,19 +47,20 @@
         
     </div>
     <div id="youWon" class="wrapper dNone">
+        <button id="fullscreen" class="fullscreen" onclick="makeFullscreen()"><img src="img/objects/fullscreen.png"></button>
         <h2>You Won !!!!</h2>
         <button class="startButton" onclick="showEndScreen()">Restart</button>
-        <img class="selectBG" src="img/objects/endScreen.png">
+        <img id="winImg" class="selectBG " src="img/objects/endScreen.png">
     </div>
     <div id="youLost" class="wrapper dNone">
         <h2>You Lost !!!!</h2>
         <button class="startButton" onclick="showEndScreen()">Restart</button>
-        <img class="selectBG" src="img/objects/endScreen.png">
+        <img id="lostImg" class="selectBG" src="img/objects/endScreen.png">
     </div>
     <div id="selectscreen" class="selectscreen dNone">
         <div class=" gameplayOverlay dNone" id="gameplayOverlay">
             <button class="optionButton"  onclick="gameplayWindow()">Back</button>
-            <img src="img/objects/gameplay.png">
+            <img id="gameplayImg" src="img/objects/gameplay.png">
         </div>
         <div class="optionOverlay dNone" id="optionOverlay">
         <div class="optionWindow">

@@ -70,6 +70,18 @@ h1{
 .dNone{
     display: none !important;
 }
+.rotate{
+    position:absolute;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+
+}
 .wrapper{
     position: relative;
     display: flex;
@@ -297,5 +309,8 @@ h1{
 .red{
     background-color: rgba(255, 0, 0, 0.521);
 }
-  
+.stretchToFull{
+    height: 100vh;
+    width: 150vh;
+}
   
