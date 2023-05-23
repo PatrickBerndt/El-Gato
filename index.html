@@ -36,16 +36,7 @@
         <h3>Please rotate your device</h3>
     </div>
 <div id="content" class="dNone">
-    <div class="overlay dNone" id="overlay">
-        <img src="img/objects/space.png">
-        <div class="controlls">
-            <img src="img/objects/arrowLeft.png">
-            <img src="img/objects/arrowUP.png">
-            <img src="img/objects/arrowRight.png">  
-        </div>
     
-        
-    </div>
     <div id="youWon" class="wrapper dNone">
         <button id="fullscreen" class="fullscreen" onclick="makeFullscreen()"><img src="img/objects/fullscreen.png"></button>
         <h2>You Won !!!!</h2>
@@ -99,6 +90,14 @@
         <button id="playButton" class="playButton" onclick="startGame()">Play</button>
         <img id="coverimage" class="coverImage" src="img/objects/front.png">
         <button id="fullscreen" class="fullscreen" onclick="makeFullscreen()"><img src="img/objects/fullscreen.png"></button>
+        <div class="overlay dNone" id="overlay">
+            <img id="btnTHROW" src="img/objects/space.png">
+            <div class="controlls">
+                <img id="btnLEFT" ontouch src="img/objects/arrowLeft.png">
+                <img id="btnUP" src="img/objects/arrowUp.png">
+                <img id="btnRIGHT" src="img/objects/arrowRight.png">
+            </div>
+        </div>
         <canvas id="canvas"  width="720" height="480"></canvas>    
     </div>
 </div>    

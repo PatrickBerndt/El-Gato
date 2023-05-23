@@ -17,16 +17,30 @@ window.addEventListener('resize', () => {
     fitToScreen();
 });
 
+window.addEventListener('fullscreenchange', () => {
+    if(!document.fullscreenElement){
+        document.getElementById('content').style = `zoom:1; ,-moz-transform: scale(1);`;
+        document.getElementById('overlay').classList.add('dNone');
+        isFullscreen = false;
+    }
+});
+
 function fitToScreen(){
     var bodyWidth = document.getElementById('body').clientWidth;
     var bodyHeight = document.getElementById('body').clientHeight;
     if(bodyWidth < 725 ){
         let zoomFactorW =  (bodyWidth/725);
         document.getElementById('content').style = `zoom:${zoomFactorW}; ,-moz-transform: scale(${zoomFactorW});`;
-    }else if(bodyHeight < 485 ){
+        document.getElementById('overlay').classList.remove('dNone');
+        addEventListenersToPanel();
+    }else if(bodyHeight < 485 || isFullscreen ){
         let zoomFactorH =  (bodyHeight/485);
         document.getElementById('content').style = `zoom:${zoomFactorH}; ,-moz-transform: scale(${zoomFactorH});`;
-        console.log(zoomFactorH);
+        document.getElementById('overlay').classList.remove('dNone');
+        addEventListenersToPanel();
+    }else{
+        document.getElementById('content').style = `zoom:1; ,-moz-transform: scale(1);`;
+        document.getElementById('overlay').classList.add('dNone');
     }
 };
 
@@ -48,23 +62,18 @@ function selectCharacter(index){
     document.getElementById(`arrow${index}`).classList.remove('dNone');
 }
 
-
-
 function makeFullscreen(){
     if(isFullscreen){
         document.exitFullscreen();
-        document.getElementById('winImg').classList.remove('stretchToFull');
         isFullscreen = false; 
     }else{
-       document.getElementById('youWon').requestFullscreen(); 
-       document.getElementById('winImg').classList.add('stretchToFull');
+       document.getElementById('body').requestFullscreen(); 
        isFullscreen = true;
     }
 }
 
 function optionWindow(){
     document.getElementById('optionOverlay').classList.toggle('dNone');
-    
 }
 
 function gameplayWindow(){
@@ -114,6 +123,7 @@ function clearAllIntervals(){
 }
 
 window.addEventListener('keydown', (event)=>{
+   console.log(event);
     if(event.code == 'ArrowLeft'){
         keyboard.LEFT = true;
     }
@@ -148,3 +158,51 @@ window.addEventListener('keyup', (event)=>{
          keyboard.SPACE = false;      
     }
 });
+
+
+
+function addEventListenersToPanel() {
+    const space = document.getElementById("btnTHROW");
+    const jump = document.getElementById("btnUP");
+    const left = document.getElementById("btnLEFT");
+    const right = document.getElementById("btnRIGHT");
+  
+    left.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      keyboard.LEFT = true;
+    });
+  
+    left.addEventListener("touchend", (e) => {
+      e.preventDefault();
+      keyboard.LEFT = false;
+    });
+  
+    right.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      keyboard.RIGHT = true;
+    });
+  
+    right.addEventListener("touchend", (e) => {
+      e.preventDefault();
+      keyboard.RIGHT = false;
+    });
+    jump.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      keyboard.UP = true;
+    });
+  
+    jump.addEventListener("touchend", (e) => {
+      e.preventDefault();
+      keyboard.UP = false;
+    });
+    space.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      keyboard.SPACE = true;
+    });
+  
+    space.addEventListener("touchend", (e) => {
+      e.preventDefault();
+      keyboard.SPACE = false;
+    });
+  
+  }

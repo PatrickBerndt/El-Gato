@@ -110,6 +110,7 @@ h1{
     height: 40px;
 }
 #content{
+    position: relative;
     width: 720px;
     height: 480px;
 }
@@ -190,11 +191,13 @@ h1{
 .overlay{
     position: absolute;
     z-index: 10;
-    height: 480px;
+    bottom: 0;
     width: 720px;
-    align-items: end;
     justify-content: space-between;
     display: flex;
+}
+.overlay img{
+    cursor: pointer;
 }
 .optionOverlay{
     position: relative;

@@ -24,6 +24,8 @@ function volumeControllFX(vol){
     bossHurtSound.volume = vol;
     crackingSound.volume = vol;
     walkingSound.volume = vol;
+    looseSound.volume = vol;
+    winSound.volume = vol;
 
 }
 
