@@ -1,5 +1,4 @@
-class Level{
-    clouds;
+class Level {
     enemies;
     boss;
     fish;
@@ -8,10 +7,9 @@ class Level{
     collectFish;
     level_end = 6190;
 
-    constructor(clouds, enemies, boss, fish, milk, boxes,collectFish){
+    constructor(enemies, boss, fish, milk, boxes, collectFish) {
         this.enemies = enemies;
         this.boss = boss;
-        this.clouds = clouds;
         this.fish = fish;
         this.milk = milk;
         this.boxes = boxes;

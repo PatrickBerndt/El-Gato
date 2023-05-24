@@ -5,9 +5,9 @@ class CollectableFish extends MovableObject {
     offset_y = 0;
     offset_width = 0;
     offset_height = 0;
-    
-   
-    constructor(x,y){
+
+
+    constructor(x, y) {
         super().loadImage('./img/objects/fish.png');
         this.x = x;
         this.y = y;
@@ -15,19 +15,19 @@ class CollectableFish extends MovableObject {
 
     }
 
-    isRising(){
+    isRising() {
         return this.speed_y < 0 && this.isAboveGround();
     }
 
-    throw(){
+    throw() {
         this.speed_y = 30;
         this.applyGravity();
-        if(this.isAboveGround()){
-         setInterval(() => {
-            this.x += 5;
-        }, 25 )   
+        if (this.isAboveGround()) {
+            setInterval(() => {
+                this.x += 5;
+            }, 25)
         }
         ;
-        
+
     }
 }

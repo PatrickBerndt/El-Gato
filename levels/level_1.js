@@ -1,22 +1,21 @@
 const level_1 = new Level(
+
     [
+        new Rat(),
+        new Rat(),
+        new Rat(),
+        new Rat(),
+        new Rat(),
+        new Rat(),
+        new Rat(),
+        new Rat(),
+
     ],
     [
-        new Rat(),
-        new Rat(),
-        new Rat(),
-        new Rat(),
-        new Rat(),
-        new Rat(),
-        new Rat(),
-        new Rat(),
-        
+        new Endboss(),
     ],
     [
-       new Endboss(),
-    ],
-    [
-        
+
     ],
     [
         new Milk(),
@@ -44,7 +43,7 @@ const level_1 = new Level(
         new Box(),
     ],
     [
-        
+
     ]
 );
 

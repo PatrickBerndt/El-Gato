@@ -1,22 +1,22 @@
 class Rat extends MovableObject {
-   
-    IMAGES_IDLE =[
+
+    IMAGES_IDLE = [
         './img/rat01/idle/Idle_1.png',
         './img/rat01/idle/Idle_2.png',
         './img/rat01/idle/Idle_3.png',
         './img/rat01/idle/Idle_4.png',
     ];
-    IMAGES_WALK =[
+    IMAGES_WALK = [
         './img/rat01/walk/Walk_1.png',
         './img/rat01/walk/Walk_2.png',
         './img/rat01/walk/Walk_3.png',
         './img/rat01/walk/Walk_4.png',
     ];
-    IMAGES_HURT =[
+    IMAGES_HURT = [
         './img/rat01/hurt/Hurt_1.png',
         './img/rat01/hurt/Hurt_2.png',
     ];
-    IMAGES_DEATH =[
+    IMAGES_DEATH = [
         './img/rat01/death/Death_1.png',
         './img/rat01/death/Death_2.png',
         './img/rat01/death/Death_3.png',
@@ -32,14 +32,14 @@ class Rat extends MovableObject {
     enemieDirection = 0;
     toClose = false;
     energy = 100;
-   
 
-    
 
-    constructor(){
-        
+
+
+    constructor() {
+
         super().loadImage('./img/rat01/idle/Idle_1.png');
-        this.x = 400 + Math.random()*6000;
+        this.x = 400 + Math.random() * 6000;
         this.loadImages(this.IMAGES_WALK);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEATH);
@@ -48,41 +48,41 @@ class Rat extends MovableObject {
         this.direction();
     }
 
-    direction(){
+    direction() {
         setInterval(() => {
-            if(this.toClose == false){
+            if (this.toClose == false) {
                 this.enemieDirection = Math.random();
             }
-            
+
             this.speed = 0.4 + Math.random() * 0.9;
         }, 2000);
     }
 
-    
-    animate(){
+
+    animate() {
         setInterval(() => {
-           if(this.isDead()){
+            if (this.isDead()) {
                 this.loadImage('./img/rat01/death/Death_4.png');
-            }else if(this.isHurt){
+            } else if (this.isHurt) {
                 this.playSingleAnimation(this.IMAGES_HURT);
-            }else if(this.enemieDirection <= 0.2 || this.enemieDirection >= 0.8){
+            } else if (this.enemieDirection <= 0.2 || this.enemieDirection >= 0.8) {
                 this.playAnimation(this.IMAGES_WALK);
-            }else{
+            } else {
                 this.playAnimation(this.IMAGES_IDLE);
             }
         }, 160);
-        
-        setInterval(()=>{
 
-            if(!this.isDead()){
-                if(this.enemieDirection <= 0.2){
+        setInterval(() => {
+
+            if (!this.isDead()) {
+                if (this.enemieDirection <= 0.2) {
                     this.moveRight();
-                }else if(this.enemieDirection >= 0.8){
+                } else if (this.enemieDirection >= 0.8) {
                     this.moveLeft();
-                }else{
-                }   
+                } else {
+                }
             }
-        },1000/60);
+        }, 1000 / 60);
     }
 
 

@@ -1,6 +1,6 @@
-class Character extends MovableObject{
+class Character extends MovableObject {
 
-IMAGES_IDLE =[
+    IMAGES_IDLE = [
         `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_1.png`,
         `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_2.png`,
         `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_3.png`,
@@ -8,9 +8,9 @@ IMAGES_IDLE =[
         `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_5.png`,
         `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_6.png`,
         `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_7.png`,
-        `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_8.png`,        
+        `./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_8.png`,
     ];
-    IMAGES_WALK =[
+    IMAGES_WALK = [
         `./img/cat0${characterNumber}/walk/cat0${characterNumber}_walk_1.png`,
         `./img/cat0${characterNumber}/walk/cat0${characterNumber}_walk_2.png`,
         `./img/cat0${characterNumber}/walk/cat0${characterNumber}_walk_3.png`,
@@ -45,7 +45,7 @@ IMAGES_IDLE =[
         `./img/cat0${characterNumber}/hurt/cat0${characterNumber}_hurt_2.png`,
         `./img/cat0${characterNumber}/hurt/cat0${characterNumber}_hurt_3.png`,
         `./img/cat0${characterNumber}/hurt/cat0${characterNumber}_hurt_4.png`
-        
+
     ];
     IMAGES_DEATH = [
         `./img/cat0${characterNumber}/die/cat0${characterNumber}_die_1.png`,
@@ -57,7 +57,7 @@ IMAGES_IDLE =[
         `./img/cat0${characterNumber}/die/cat0${characterNumber}_die_7.png`,
         `./img/cat0${characterNumber}/die/cat0${characterNumber}_die_8.png`
     ];
-    
+
     height = 160;
     width = 160;
     speed = 5;
@@ -67,11 +67,11 @@ IMAGES_IDLE =[
     offset_height = 30;
     currentImage = 0;
     world;
-    
-    triggert = false;
-    energy = 100 ;
 
-    constructor(){
+    triggert = false;
+    energy = 100;
+
+    constructor() {
         super().loadImage(`./img/cat0${characterNumber}/idle/cat0${characterNumber}_idle_1.png`);
 
         this.loadImages(this.IMAGES_WALK);
@@ -85,55 +85,55 @@ IMAGES_IDLE =[
         this.applyGravity();
     }
 
-    isFalling(){
+    isFalling() {
         return this.speed_y < 0 && this.isAboveGround();
     }
 
 
-    animate(){
+    animate() {
         setInterval(() => {
-            if(this.world.keyboard.RIGHT && this.x < this.world.level.level_end && !this.isDead()){
+            if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end && !this.isDead()) {
                 this.moveRight();
             }
-            if(this.world.keyboard.LEFT && this.x > 100 && !this.isDead()){
+            if (this.world.keyboard.LEFT && this.x > 100 && !this.isDead()) {
                 this.moveLeft();
             }
-            if(this.world.keyboard.UP &! this.isAboveGround() && !this.isDead()){
+            if (this.world.keyboard.UP & !this.isAboveGround() && !this.isDead()) {
                 this.jump();
             }
-            if(this.world.keyboard.SPACE && !this.isDead() ){
-                this.triggert= true;
-                
+            if (this.world.keyboard.SPACE && !this.isDead()) {
+                this.triggert = true;
+
             }
-            this.world.camera_x = -this.x +100;
+            this.world.camera_x = -this.x + 100;
             this.triggerAnimation();
         }, 16);
 
         setInterval(() => {
             walkingSound.pause();
-            if(this.isDead()){
+            if (this.isDead()) {
                 this.loadImage(`./img/cat0${characterNumber}/die/cat0${characterNumber}_die_8.png`)
-            }else if(this.isAboveGround() && this.speed_y < 0){
+            } else if (this.isAboveGround() && this.speed_y < 0) {
                 this.playAnimation(this.IMAGES_FALL);
-            }else if(this.isAboveGround() && this.speed_y > 0){
+            } else if (this.isAboveGround() && this.speed_y > 0) {
                 this.playAnimation(this.IMAGES_JUMP);
-            }else{
-                if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT){
+            } else {
+                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                     this.playAnimation(this.IMAGES_WALK);
                     walkingSound.play();
-                }else{
+                } else {
                     this.playAnimation(this.IMAGES_IDLE);
-                }   
+                }
             }
-            if(this.isHurt && !this.isDead()){
+            if (this.isHurt && !this.isDead()) {
                 this.playSingleAnimation(this.IMAGES_HURT);
             }
         }, 160);
     }
 
-    triggerAnimation(){
-        if(this.triggert){
-        this.playSingleAnimation(this.IMAGES_ATTACK); 
+    triggerAnimation() {
+        if (this.triggert) {
+            this.playSingleAnimation(this.IMAGES_ATTACK);
         }
     };
 }

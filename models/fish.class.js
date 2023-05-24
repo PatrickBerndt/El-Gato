@@ -1,4 +1,4 @@
-class Fish extends MovableObject{
+class Fish extends MovableObject {
 
     width = 40;
     height = 70;
@@ -7,8 +7,8 @@ class Fish extends MovableObject{
     offset_width = 0;
     offset_height = 0;
     world;
-   
-    constructor(x,y){
+
+    constructor(x, y) {
         super().loadImage('./img/objects/fish.png');
         this.x = x;
         this.y = y;
@@ -16,18 +16,18 @@ class Fish extends MovableObject{
         this.throw();
     }
 
-    throw(){
+    throw() {
         this.speed_y = 10;
         this.applyGravity();
-        if(this.world.character.mirrorImage){
+        if (this.world.character.mirrorImage) {
             setInterval(() => {
                 this.x += -15;
-              }, 25 );
-        }else{
+            }, 25);
+        } else {
             setInterval(() => {
-            this.x += 15;
-            }, 25 );
+                this.x += 15;
+            }, 25);
         }
-        
+
     }
 }

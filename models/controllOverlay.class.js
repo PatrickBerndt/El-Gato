@@ -1,10 +1,10 @@
-class ControllOverlay extends DrawableObject{
+class ControllOverlay extends DrawableObject {
 
     width = 230;
     height = 65;
     y = 20;
-    x = 220; 
-    constructor(){
+    x = 220;
+    constructor() {
         super().loadImage('./img/objects/controlls.png');
     }
 }

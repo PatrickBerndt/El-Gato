@@ -9,15 +9,15 @@ winSound = new Audio('audio/winSound.mp3');
 looseSound = new Audio('audio/looseSound.mp3');
 walkingSound = new Audio('audio/walk.mp3');
 menuSound = new Audio('audio/menuSound.mp3');
-let muteSoundtoggle = false; 
+let muteSoundtoggle = false;
 
-function volumeControllMusic(vol){
+function volumeControllMusic(vol) {
     menuSound.volume = vol;
     gameMusic.volume = vol;
     bossMusic.volume = vol;
 }
 
-function volumeControllFX(vol){
+function volumeControllFX(vol) {
     attackingSound.volume = vol;
     collectSound.volume = vol;
     ratHurtSound.volume = vol;
@@ -29,16 +29,16 @@ function volumeControllFX(vol){
 
 }
 
-function muteSound(){
+function muteSound() {
     document.getElementById('muteButton').classList.toggle('red');
-    if(muteButton){
-        muteButton= false;
+    if (muteButton) {
+        muteButton = false;
         volumeControllFX(0);
         volumeControllMusic(0);
-    }else{
-        muteButton= true;
-        volumeControllFX(0.5);
-        volumeControllMusic(0.5);
+    } else {
+        muteButton = true;
+        volumeControllFX(0.3);
+        volumeControllMusic(0.3);
     }
 
 }

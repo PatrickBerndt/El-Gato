@@ -1,6 +1,6 @@
-class Box extends MovableObject{
+class Box extends MovableObject {
     y = 357;
-    height= 70;
+    height = 70;
     width = 70;
     offset_x = 0;
     offset_y = 0;
@@ -8,24 +8,21 @@ class Box extends MovableObject{
     offset_height = 0;
     energy = 100;
 
-    constructor(){
+    constructor() {
         super().loadImage('./img/objects/box_1.png');
-        this.x = 400 + Math.random()*5000;
+        this.x = 400 + Math.random() * 5000;
         this.animate();
     }
 
-    animate(){
+    animate() {
         setInterval(() => {
-            if(this.energy == 0){
+            if (this.energy == 0) {
                 this.loadImage('./img/objects/box_3.png');
-            }else if(this.energy == 50){
+            } else if (this.energy == 50) {
                 this.loadImage('./img/objects/box_2.png');
-            }else{
+            } else {
                 this.loadImage('./img/objects/box_1.png');
-            }    
+            }
         }, 100);
-
     }
-
-    
 }
