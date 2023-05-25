@@ -55,6 +55,27 @@ class World {
         this.addToMap(this.bgLayer5);
     }
 
+    addObjects() {
+        this.addObjectToMap(this.fish);
+        this.addObjectToMap(this.milk);
+        this.addObjectToMap(this.throwFish);
+        this.addObjectToMap(this.collectFish);
+    }
+
+    addStatusbar() {
+        this.addToMap(this.healthBar);
+        this.addToMap(this.milkBar);
+        this.addToMap(this.fishBar);
+        this.addToMap(this.controllOverlay);
+        this.addObjectToMap(this.overlay);
+    }
+
+    addWalkingObjects() {
+        this.addToMap(this.character);
+        this.addObjectToMap(this.enemies);
+        this.addObjectToMap(this.boss);
+    }
+
     setWorld() {
         this.character.world = this;
     }
@@ -65,19 +86,10 @@ class World {
         this.ctx.translate(this.camera_x, 0);
         this.addBackground();
         this.addObjectToMap(this.boxes);
-        this.addToMap(this.character);
-        this.addObjectToMap(this.enemies);
-        this.addObjectToMap(this.boss);
-        this.addObjectToMap(this.fish);
-        this.addObjectToMap(this.milk);
-        this.addObjectToMap(this.throwFish);
-        this.addObjectToMap(this.collectFish);
+        this.addWalkingObjects();
+        this.addObjects();
         this.ctx.translate(-this.camera_x, 0)
-        this.addToMap(this.healthBar);
-        this.addToMap(this.milkBar);
-        this.addToMap(this.fishBar);
-        this.addToMap(this.controllOverlay);
-        this.addObjectToMap(this.overlay);
+        this.addStatusbar();
         let self = this;
         requestAnimationFrame(function () {
             self.draw();
@@ -163,37 +175,46 @@ class World {
             let difference = enemy.x - this.character.x;
             setTimeout(() => {
                 if (difference <= 400 && !(difference <= 200)) {
-                    if (enemy instanceof Endboss) {
-                        enemy.toClose = true;
-                        enemy.attackCharacter = false;
-                        enemy.enemieDirection = 0.9;
-                    } else {
-                        enemy.toClose = true;
-                        enemy.enemieDirection = 0.1;
-                    }
+                    this.checkIfEndboss(enemy);
                 } else if (difference >= -400 && !(difference >= -200)) {
-                    if (enemy instanceof Endboss) {
-                        enemy.toClose = true;
-                        enemy.attackCharacter = false;
-                        enemy.enemieDirection = 0.1;
-                    } else {
-                        enemy.toClose = true;
-                        enemy.enemieDirection = 0.9;
-                    }
+                    this.checkIfEnemyBehind(enemy);
                 } else if (difference <= 200 && !(difference <= 0)) {
                     enemy.toClose = true;
-                    enemy.attackCharacter = true;
-                    enemy.enemieDirection = 0.9;
+                    this.setDirection(enemy, 0.9, true)
                 } else if (difference >= -200 && !(difference >= 0)) {
                     enemy.toClose = true;
-                    enemy.attackCharacter = true;
-                    enemy.enemieDirection = 0.1;
+                    this.setDirection(enemy, 0.1, true)
                 } else if ((this.level.level_end - enemy.x) <= 400) {
                     enemy.toClose = true;
                     enemy.enemieDirection = 0.9;
                 }
             }, 125);
         })
+    }
+
+    checkIfEnemyInfront(enemy){
+        if (enemy instanceof Endboss) {
+            enemy.toClose = true;
+            this.setDirection(enemy, 0.9, false)
+        } else {
+            enemy.toClose = true;
+            enemy.enemieDirection = 0.1;
+        }
+    }
+
+    checkIfEnemyBehind(enemy){
+        if (enemy instanceof Endboss) {
+            enemy.toClose = true;
+            this.setDirection(enemy, 0.1, false)
+        } else {
+            enemy.toClose = true;
+            enemy.enemieDirection = 0.9;
+        }
+    }
+
+    setDirection(enemy, direction, boolValue){
+        enemy.attackCharacter = boolValue;
+        enemy.enemieDirection = direction;
     }
 
     checkIsColliding(enemies) {
@@ -208,22 +229,26 @@ class World {
                 }, 1000);
             } else if (this.character.isColliding(enemy, 0, 0, 50, 0) && this.character.isFalling()) {
                 enemy.isHurt = true;
-                if (!enemy.isDead()) {
-                    this.character.speed_y = 20;
-                    if (enemy instanceof Rat) {
-                        ratHurtSound.play();
-                        enemy.hit(50);
-                    } else if (enemy instanceof Endboss) {
-                        bossHurtSound.play();
-                        enemy.hit(20);
-                    }
-                }
+                this.checkWhoIsHurt(enemy);
                 this.getImune(1000);
                 setTimeout(() => {
                     enemy.isHurt = false;
                 }, 1000);
             }
         });
+    }
+
+    checkWhoIsHurt(enemy){
+        if (!enemy.isDead()) {
+            this.character.speed_y = 20;
+            if (enemy instanceof Rat) {
+                ratHurtSound.play();
+                enemy.hit(50);
+            } else if (enemy instanceof Endboss) {
+                bossHurtSound.play();
+                enemy.hit(20);
+            }
+        }
     }
 
     thwowCollectFish(box) {
@@ -237,13 +262,7 @@ class World {
                 if (fish.isColliding(enemy, 0, 0, 40, 0) && !this.isImune && !enemy.isDead()) {
                     enemy.isHurt = true;
                     this.getImune(1000);
-                    if (enemy instanceof Rat) {
-                        enemy.hit(50);
-                        ratHurtSound.play();
-                    } else if (enemy instanceof Endboss) {
-                        enemy.hit(20);
-                        bossHurtSound.play();
-                    }
+                    this.checkWhoIsHurt(enemy);
                     setTimeout(() => {
                         enemy.isHurt = false;
                     }, 1000);

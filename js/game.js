@@ -135,9 +135,6 @@ window.addEventListener('keydown', (event) => {
     if (event.code == 'ArrowUp') {
         keyboard.UP = true;
     }
-    if (event.code == 'ArrowDown') {
-        keyboard.DOWN = true;
-    }
     if (event.code == 'Space') {
         keyboard.SPACE = true;
     }
@@ -153,9 +150,6 @@ window.addEventListener('keyup', (event) => {
     if (event.code == 'ArrowUp') {
         keyboard.UP = false;
     }
-    if (event.code == 'ArrowDown') {
-        keyboard.DOWN = false;
-    }
     if (event.code == 'Space') {
         keyboard.SPACE = false;
     }
@@ -164,10 +158,14 @@ window.addEventListener('keyup', (event) => {
 
 
 function addEventListenersToPanel() {
-    const space = document.getElementById("btnTHROW");
-    const jump = document.getElementById("btnUP");
+    touchLeft();
+    touchRight();
+    touchUp();
+    touchSpace();
+}
+
+function touchLeft() {
     const left = document.getElementById("btnLEFT");
-    const right = document.getElementById("btnRIGHT");
 
     left.addEventListener("touchstart", (e) => {
         e.preventDefault();
@@ -178,6 +176,10 @@ function addEventListenersToPanel() {
         e.preventDefault();
         keyboard.LEFT = false;
     });
+}
+
+function touchRight() {
+    const right = document.getElementById("btnRIGHT");
 
     right.addEventListener("touchstart", (e) => {
         e.preventDefault();
@@ -188,6 +190,11 @@ function addEventListenersToPanel() {
         e.preventDefault();
         keyboard.RIGHT = false;
     });
+}
+
+function touchUp() {
+    const jump = document.getElementById("btnUP");
+
     jump.addEventListener("touchstart", (e) => {
         e.preventDefault();
         keyboard.UP = true;
@@ -197,6 +204,11 @@ function addEventListenersToPanel() {
         e.preventDefault();
         keyboard.UP = false;
     });
+}
+
+function touchSpace() {
+    const space = document.getElementById("btnTHROW");
+
     space.addEventListener("touchstart", (e) => {
         e.preventDefault();
         keyboard.SPACE = true;
@@ -206,5 +218,4 @@ function addEventListenersToPanel() {
         e.preventDefault();
         keyboard.SPACE = false;
     });
-
 }
