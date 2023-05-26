@@ -125,7 +125,6 @@ function clearAllIntervals() {
 }
 
 window.addEventListener('keydown', (event) => {
-    console.log(event);
     if (event.code == 'ArrowLeft') {
         keyboard.LEFT = true;
     }

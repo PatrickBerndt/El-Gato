@@ -175,7 +175,7 @@ class World {
             let difference = enemy.x - this.character.x;
             setTimeout(() => {
                 if (difference <= 400 && !(difference <= 200)) {
-                    this.checkIfEndboss(enemy);
+                    this.checkIfEnemyInfront(enemy);
                 } else if (difference >= -400 && !(difference >= -200)) {
                     this.checkIfEnemyBehind(enemy);
                 } else if (difference <= 200 && !(difference <= 0)) {
@@ -262,7 +262,7 @@ class World {
                 if (fish.isColliding(enemy, 0, 0, 40, 0) && !this.isImune && !enemy.isDead()) {
                     enemy.isHurt = true;
                     this.getImune(1000);
-                    this.checkWhoIsHurt(enemy);
+                    this.checkWhoIsHurtFish(enemy);
                     setTimeout(() => {
                         enemy.isHurt = false;
                     }, 1000);
@@ -270,6 +270,18 @@ class World {
             })
 
         })
+    }
+
+    checkWhoIsHurtFish(enemy){
+        if (!enemy.isDead()) {
+            if (enemy instanceof Rat) {
+                ratHurtSound.play();
+                enemy.hit(50);
+            } else if (enemy instanceof Endboss) {
+                bossHurtSound.play();
+                enemy.hit(20);
+            }
+        }
     }
 
     checkCollisionBox() {

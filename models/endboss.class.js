@@ -74,30 +74,36 @@ class Endboss extends MovableObject {
 
     animate() {
         setInterval(() => {
-            if (this.isDead()) {
-                this.loadImage('./img/boss/death/Death_4.png');
-            } else if (this.isHurt) {
-                this.playSingleAnimation(this.IMAGES_HURT);
-            } else if (this.attackCharacter) {
-                this.playAnimation(this.IMAGES_ATTACK);
-            } else if (this.enemieDirection <= 0.2 || this.enemieDirection >= 0.8) {
-                this.playAnimation(this.IMAGES_WALK);
-            } else {
-                this.playAnimation(this.IMAGES_IDLE);
-            }
-
+            this.animationFrame();
         }, 160);
 
         setInterval(() => {
-            if (!this.isDead() && this.endzone) {
-                if (this.enemieDirection <= 0.2) {
-                    this.moveRight();
-                } else if (this.enemieDirection >= 0.8) {
-                    this.moveLeft();
-                } else {
-                }
-            }
+            this.move();
         }, 1000 / 60);
+    }
 
+    animationFrame(){
+        if (this.isDead()) {
+            this.loadImage('./img/boss/death/Death_4.png');
+        } else if (this.isHurt) {
+            this.playSingleAnimation(this.IMAGES_HURT);
+        } else if (this.attackCharacter) {
+            this.playAnimation(this.IMAGES_ATTACK);
+        } else if (this.enemieDirection <= 0.2 || this.enemieDirection >= 0.8) {
+            this.playAnimation(this.IMAGES_WALK);
+        } else {
+            this.playAnimation(this.IMAGES_IDLE);
+        }
+    }
+
+    move(){
+       if (!this.isDead() && this.endzone) {
+            if (this.enemieDirection <= 0.2) {
+                this.moveRight();
+            } else if (this.enemieDirection >= 0.8) {
+                this.moveLeft();
+            } else {
+            }
+        } 
     }
 }

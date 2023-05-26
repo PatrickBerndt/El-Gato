@@ -16,13 +16,17 @@ class Box extends MovableObject {
 
     animate() {
         setInterval(() => {
-            if (this.energy == 0) {
-                this.loadImage('./img/objects/box_3.png');
-            } else if (this.energy == 50) {
-                this.loadImage('./img/objects/box_2.png');
-            } else {
-                this.loadImage('./img/objects/box_1.png');
-            }
+            this.animationFrame();
         }, 100);
+    }
+
+    animationFrame(){
+        if (this.energy == 0) {
+            this.loadImage('./img/objects/box_3.png');
+        } else if (this.energy == 50) {
+            this.loadImage('./img/objects/box_2.png');
+        } else {
+            this.loadImage('./img/objects/box_1.png');
+        }
     }
 }
